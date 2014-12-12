@@ -2,6 +2,7 @@ package bgb.com.simplexalgorithm;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
@@ -30,7 +31,7 @@ public class simplexmain extends ActionBarActivity {
 
         initialize();
         //Simplex now = new Simplex();
-
+		EditTexGen(this);
         equGenBUTTON.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,13 +67,14 @@ public class simplexmain extends ActionBarActivity {
     }
 
 
-    public void EditTexGen(){
-        setContentView(R.layout.activity_simplexmain);
-//        EditText txt = new EditText(this);
-//        lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1.0f);
-//        txt.setLayoutParams(lp);
-//        txt.setSingleLine(false);
-//        txt.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+    public void EditTexGen(Context context){
+        LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
+	    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1.0f);
+	    EditText et = new EditText(context);
+        et.setLayoutParams(lp);
+        et.setSingleLine(false);
+        et.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+	    mLinearLayout.addView(et);
     }
 
     public void initialize() {
