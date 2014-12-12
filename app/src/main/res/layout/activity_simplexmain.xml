@@ -51,7 +51,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/nConstraints" />
+                android:id="@+id/nConstraints"
+                android:gravity="center" />
 
             <EditText
                 android:layout_weight="50"
@@ -59,7 +60,9 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/nVariables" />
+                android:id="@+id/nVariables"
+                android:hint="max 6"
+                android:gravity="center" />
         </LinearLayout>
 
         <Button

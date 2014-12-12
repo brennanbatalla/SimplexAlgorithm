@@ -1,11 +1,11 @@
 package bgb.com.simplexalgorithm;
 
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +13,6 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -31,13 +30,23 @@ public class simplexmain extends ActionBarActivity {
 
         initialize();
         //Simplex now = new Simplex();
-		EditTexGen(this);
+
         equGenBUTTON.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.w("Next_Button", "You got here");
+                //equGen();
 
-                equGen();
 
+                if (!nVariables.getText().toString().matches("") && Integer.parseInt(nVariables.getText().toString()) <= 6) {
+                    int variables = Integer.parseInt(nVariables.getText().toString());
+                    ObjFuncGen(getApplicationContext(), variables);
+                } else if (nVariables.getText().toString().matches("")) {
+
+                    cheers("Please Input number of Variables");
+                } else {
+                    cheers("Variables must be less than 7");
+                }
             }
         });
 
@@ -67,14 +76,20 @@ public class simplexmain extends ActionBarActivity {
     }
 
 
-    public void EditTexGen(Context context){
-        LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
-	    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT, 1.0f);
-	    EditText et = new EditText(context);
-        et.setLayoutParams(lp);
-        et.setSingleLine(false);
-        et.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-	    mLinearLayout.addView(et);
+    public void ObjFuncGen(Context context, int variables){
+
+        for(int i = 0; i <= variables - 1; i++) {
+            LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+            EditText et = new EditText(context);
+            et.setLayoutParams(lp);
+            et.setSingleLine(false);
+            et.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
+            mLinearLayout.addView(et);
+            et.setId(i);
+
+        }
+
     }
 
     public void initialize() {
