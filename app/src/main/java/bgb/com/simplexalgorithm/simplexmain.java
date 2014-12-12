@@ -2,6 +2,7 @@ package bgb.com.simplexalgorithm;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.text.InputType;
@@ -13,7 +14,11 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class simplexmain extends ActionBarActivity {
@@ -78,7 +83,8 @@ public class simplexmain extends ActionBarActivity {
 
     public void ObjFuncGen(Context context, int variables){
 
-        for(int i = 0; i <= variables - 1; i++) {
+        for(int i = 0; i <= variables; i++) {
+            List<EditText> etArray = new ArrayList<>();
             LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             EditText et = new EditText(context);
@@ -86,7 +92,43 @@ public class simplexmain extends ActionBarActivity {
             et.setSingleLine(false);
             et.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
             mLinearLayout.addView(et);
-            et.setId(i);
+            etArray.add(et);  // Add to list
+
+
+
+            TextView tv = new TextView(context);
+            tv.setLayoutParams(lp);
+            tv.setInputType(InputType.TYPE_CLASS_TEXT);
+            mLinearLayout.addView(tv);
+
+            switch(i){
+                case 0:
+                    tv.setText("a1");
+                    break;
+                case 1:
+                    tv.setText("a2");
+                    break;
+                case 2:
+                    tv.setText("a3");
+                    break;
+                case 3:
+                    tv.setText("a4");
+                    break;
+                case 4:
+                    tv.setText("a5");
+                    break;
+                case 5:
+                    tv.setText("a6");
+                    break;
+                case 6:
+                    tv.setText("b");
+                    break;
+                default:
+                    cheers("How did you get here?");
+            }
+
+
+            tv.setTextColor(Color.BLACK);
 
         }
 
