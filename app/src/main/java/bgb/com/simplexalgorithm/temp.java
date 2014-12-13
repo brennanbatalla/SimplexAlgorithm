@@ -27,148 +27,148 @@ import java.util.List;
 public class simplexmain extends ActionBarActivity {
 
 
-    EditText nConstraints;
-    EditText nVariables;
-    Button equGenBUTTON;
+	EditText nConstraints;
+	EditText nVariables;
+	Button equGenBUTTON;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simplexmain);
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_simplexmain);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        setSupportActionBar(toolbar);
-	    //toolbar.setTitle("Simplex");
+		setSupportActionBar(toolbar);
+		//toolbar.setTitle("Simplex");
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(simplexmain.this,"FAB",Toast.LENGTH_SHORT).show();
-            }
-        });
+		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+		fab.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(simplexmain.this,"FAB",Toast.LENGTH_SHORT).show();
+			}
+		});
 
-        initialize();
-        //Simplex now = new Simplex();
+		initialize();
+		//Simplex now = new Simplex();
 
-        equGenBUTTON.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.w("Next_Button", "You got here");
-                //equGen();
-
-
-                if (!nVariables.getText().toString().matches("") && Integer.parseInt(nVariables.getText().toString()) <= 6) {
-                    int variables = Integer.parseInt(nVariables.getText().toString());
-                    ObjFuncGen(getApplicationContext(), variables);
-                } else if (nVariables.getText().toString().matches("")) {
-
-                    cheers("Please Input number of Variables");
-                } else {
-                    cheers("Variables must be less than 7");
-                }
-            }
-        });
-
-    }
+		equGenBUTTON.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Log.w("Next_Button", "You got here");
+				//equGen();
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_simplexmain, menu);
-        return true;
-    }
+				if (!nVariables.getText().toString().matches("") && Integer.parseInt(nVariables.getText().toString()) <= 6) {
+					int variables = Integer.parseInt(nVariables.getText().toString());
+					ObjFuncGen(getApplicationContext(), variables);
+				} else if (nVariables.getText().toString().matches("")) {
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+					cheers("Please Input number of Variables");
+				} else {
+					cheers("Variables must be less than 7");
+				}
+			}
+		});
 
-        //noinspection SimplifiableIfStatement
+	}
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu_simplexmain, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+
+		//noinspection SimplifiableIfStatement
        /* if (id == R.id.action_settings) {
             return true;
         }
 */
-        return super.onOptionsItemSelected(item);
-    }
+		return super.onOptionsItemSelected(item);
+	}
 
 
-    public void ObjFuncGen(Context context, int variables){
+	public void ObjFuncGen(Context context, int variables){
 
-        List<EditText> etArray = new ArrayList<>();
+		List<EditText> etArray = new ArrayList<>();
 
-        for(int i = 1; i <= variables; i++) {
+		for(int i = 1; i <= variables; i++) {
 
-            LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-            EditText et = new EditText(context);
-            et.setLayoutParams(lp);
-            et.setSingleLine(false);
-            et.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
-            mLinearLayout.addView(et);
-            etArray.add(et);  // Add to list
-
-
-
-            TextView tv = new TextView(context);
-            tv.setLayoutParams(lp);
-            tv.setInputType(InputType.TYPE_CLASS_TEXT);
-            mLinearLayout.addView(tv);
-
-            switch(i){
-                case 0:
-                    tv.setText("a1");
-                    break;
-                case 1:
-                    tv.setText("a2");
-                    break;
-                case 2:
-                    tv.setText("a3");
-                    break;
-                case 3:
-                    tv.setText("a4");
-                    break;
-                case 4:
-                    tv.setText("a5");
-                    break;
-                case 5:
-                    tv.setText("a6");
-                    break;
-                case 6:
-                    tv.setText("b");
-                    break;
-                default:
-                    cheers("How did you get here?");
-            }
+			LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
+			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+			EditText et = new EditText(context);
+			et.setLayoutParams(lp);
+			et.setSingleLine(false);
+			et.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
+			mLinearLayout.addView(et);
+			etArray.add(et);  // Add to list
 
 
-            tv.setTextColor(Color.BLACK);
 
-        }
+			TextView tv = new TextView(context);
+			tv.setLayoutParams(lp);
+			tv.setInputType(InputType.TYPE_CLASS_TEXT);
+			mLinearLayout.addView(tv);
 
-    }
+			switch(i){
+				case 0:
+					tv.setText("a1");
+					break;
+				case 1:
+					tv.setText("a2");
+					break;
+				case 2:
+					tv.setText("a3");
+					break;
+				case 3:
+					tv.setText("a4");
+					break;
+				case 4:
+					tv.setText("a5");
+					break;
+				case 5:
+					tv.setText("a6");
+					break;
+				case 6:
+					tv.setText("b");
+					break;
+				default:
+					cheers("How did you get here?");
+			}
 
-    public void initialize() {
-        nConstraints = (EditText) findViewById(R.id.nConstraints);  // scscsdvsv
-        nVariables = (EditText) findViewById(R.id.nVariables);
-        equGenBUTTON = (Button) findViewById(R.id.equGen);
 
-    }
+			tv.setTextColor(Color.BLACK);
 
-    public void cheers(String message){
-        Toast.makeText(this, message,
-                Toast.LENGTH_LONG).show();
-}
+		}
 
-public void equGen(){
+	}
+
+	public void initialize() {
+		nConstraints = (EditText) findViewById(R.id.nConstraints);  // scscsdvsv
+		nVariables = (EditText) findViewById(R.id.nVariables);
+		equGenBUTTON = (Button) findViewById(R.id.equGen);
+
+	}
+
+	public void cheers(String message){
+		Toast.makeText(this, message,
+				Toast.LENGTH_LONG).show();
+	}
+
+	public void equGen(){
 
 // i cant get it here
 
-}
+	}
 
 
 
