@@ -27,8 +27,8 @@
 			    android:hint="@string/constraintHint"
 			    android:id="@+id/nConstraints"
 			    android:gravity="center"
-			    android:textColorHint="@color/accent_500"
-			    android:textColor="@color/accent_500"/>
+			    android:textColorHint="@color/primary_900"
+			    android:textColor="@color/primary_900"/>
 
 		    <EditText
 			    android:layout_weight="50"
@@ -36,11 +36,11 @@
 			    android:layout_height="wrap_content"
 			    android:inputType="number"
 			    android:ems="10"
-			    android:textColor="@color/accent_500"
+			    android:textColor="@color/primary_900"
 			    android:id="@+id/nVariables"
 			    android:hint="@string/variablesHint"
 			    android:gravity="center"
-			    android:textColorHint="@color/accent_500"/>
+			    android:textColorHint="@color/primary_900"/>
 
 	    </LinearLayout>
 
