@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/primary_900">
+    <item>
+        <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <!-- Pressed -->
+            <item android:state_pressed="true">
+                <shape xmlns:android="http://schemas.android.com/apk/res/android">
+                    <solid android:color="@color/primary_600" />
+                </shape>
+            </item>
+
+            <!-- Hovered -->
+            <item android:state_hovered="true">
+                <shape xmlns:android="http://schemas.android.com/apk/res/android">
+                    <solid android:color="@color/primary_600" />
+                </shape>
+            </item>
+
+            <!-- Focused -->
+            <item android:state_focused="true">
+                <shape xmlns:android="http://schemas.android.com/apk/res/android">
+                    <solid android:color="@color/primary_600" />
+                </shape>
+            </item>
+
+            <!-- Normal -->
+            <item>
+                <shape xmlns:android="http://schemas.android.com/apk/res/android">
+                    <solid android:color="@color/primary_500" />
+                    <corners android:radius="2dip" />
+                </shape>
+            </item>
+
+        </selector>
+    </item>
+</ripple>
