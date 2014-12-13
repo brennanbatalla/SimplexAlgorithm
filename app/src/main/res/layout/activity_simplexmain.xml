@@ -9,7 +9,31 @@
         android:layout_height="128dp"
         android:layout_width="match_parent"
         android:minHeight="?attr/actionBarSize"
-        android:background="?attr/colorPrimary" />
+        android:background="?attr/colorPrimary">
+
+	    <EditText
+		    android:layout_weight="50"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:inputType="number"
+		    android:ems="10"
+		    android:textColor="@color/white"
+		    android:hint="@string/constraintHint"
+		    android:id="@+id/nConstraints"
+		    android:gravity="center" />
+
+	    <EditText
+		    android:layout_weight="50"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:inputType="number"
+		    android:ems="10"
+		    android:textColor="@color/white"
+		    android:id="@+id/nVariables"
+		    android:hint="@string/variablesHint"
+		    android:gravity="center" />
+
+    </android.support.v7.widget.Toolbar>
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
@@ -17,9 +41,10 @@
         android:layout_height="wrap_content"
         fab:fab_colorNormal="@color/accent_500"
         fab:fab_colorPressed="@color/accent_700"
-        android:layout_gravity="right"
+        android:layout_gravity="end"
         android:layout_marginTop="-26dp"
-        android:layout_marginRight="16dp"/>
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"/>
 
 	<LinearLayout
 	    android:orientation="vertical"
@@ -38,7 +63,7 @@
 	        android:layout_width="fill_parent"
 	        android:layout_height="94dp"
 	        android:id="@+id/EditTextGen"
-	        android:padding="5dp"></LinearLayout>
+	        android:padding="5dp"/>
 
 	    <TextView
 	        android:layout_width="wrap_content"
@@ -60,14 +85,7 @@
             android:layout_height="wrap_content"
             android:weightSum="100">
 
-            <TextView
-                android:layout_weight="50"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="# of Constraints"
-                android:id="@+id/blah1"
-                android:gravity="center" />
+
 
             <TextView
                 android:layout_weight="50"
@@ -76,35 +94,6 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="# of Variables"
                 android:id="@+id/blah2"
-                android:gravity="center" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:weightSum="100">
-
-
-            <EditText
-                android:layout_weight="50"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/nConstraints"
-                android:gravity="center" />
-
-            <EditText
-                android:layout_weight="50"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:inputType="number"
-                android:ems="10"
-                android:id="@+id/nVariables"
-                android:hint="max 6"
                 android:gravity="center" />
         </LinearLayout>
 
