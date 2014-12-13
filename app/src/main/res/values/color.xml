@@ -8,20 +8,20 @@
          -->
 
     <!--reds-->
-    <color name="red_50">#fde0dc</color>
-    <color name="red_100">#f9bdbb</color>
-    <color name="red_200">#f69988</color>
-    <color name="red_300">#f36c60</color>
-    <color name="red_400">#e84e40</color>
-    <color name="red_500">#e51c23</color>
-    <color name="red_600">#dd191d</color>
-    <color name="red_700">#d01716</color>
-    <color name="red_800">#c41411</color>
-    <color name="red_900">#b0120a</color>
-    <color name="red_A100">#ff7997</color>
-    <color name="red_A200">#ff5177</color>
-    <color name="red_A400">#ff2d6f</color>
-    <color name="red_A700">#e00032</color>
+    <color name="primary_50">#fde0dc</color>
+    <color name="primary_100">#f9bdbb</color>
+    <color name="primary_200">#f69988</color>
+    <color name="primary_300">#f36c60</color>
+    <color name="primary_400">#e84e40</color>
+    <color name="primary_500">#e51c23</color>
+    <color name="primary_600">#dd191d</color>
+    <color name="primary_700">#d01716</color>
+    <color name="primary_800">#c41411</color>
+    <color name="primary_900">#b0120a</color>
+    <color name="primary_A100">#ff7997</color>
+    <color name="primary_A200">#ff5177</color>
+    <color name="primary_A400">#ff2d6f</color>
+    <color name="primary_A700">#e00032</color>
 
     <!-- pink_s -->
     <color name="pink_50">#fce4ec</color>
@@ -72,36 +72,36 @@
     <color name="deep_purple_A700">#6200ea</color>
 
     <!-- indigo -->
-    <color name="indigo_50">#e8eaf6</color>
-    <color name="indigo_100">#c5cae9</color>
-    <color name="indigo_200">#9fa8da</color>
-    <color name="indigo_300">#7986cb</color>
-    <color name="indigo_400">#5c6bc0</color>
-    <color name="indigo_500">#3f51b5</color>
-    <color name="indigo_600">#3949ab</color>
-    <color name="indigo_700">#303f9f</color>
-    <color name="indigo_800">#283593</color>
-    <color name="indigo_900">#1a237e</color>
-    <color name="indigo_A100">#8c9eff</color>
-    <color name="indigo_A200">#536dfe</color>
-    <color name="indigo_A400">#3d5afe</color>
-    <color name="indigo_A700">#304ffe</color>
+    <color name="accent_50">#e8eaf6</color>
+    <color name="accent_100">#c5cae9</color>
+    <color name="accent_200">#9fa8da</color>
+    <color name="accent_300">#7986cb</color>
+    <color name="accent_400">#5c6bc0</color>
+    <color name="accent_500">#3f51b5</color>
+    <color name="accent_600">#3949ab</color>
+    <color name="accent_700">#303f9f</color>
+    <color name="accent_800">#283593</color>
+    <color name="accent_900">#1a237e</color>
+    <color name="accent_A100">#8c9eff</color>
+    <color name="accent_A200">#536dfe</color>
+    <color name="accent_A400">#3d5afe</color>
+    <color name="accent_A700">#304ffe</color>
 
     <!--blue-->
-    <color name="primary_50">#e7e9fd</color>
-    <color name="primary_100">#d0d9ff</color>
-    <color name="primary_200">#afbfff</color>
-    <color name="primary_300">#91a7ff</color>
-    <color name="primary_400">#738ffe</color>
-    <color name="primary_500">#5677fc</color>
-    <color name="primary_600">#4e6cef</color>
-    <color name="primary_700">#455ede</color>
-    <color name="primary_800">#3b50ce</color>
-    <color name="primary_900">#2a36b1</color>
-    <color name="primary_A100">#a6baff</color>
-    <color name="primary_A200">#6889ff</color>
-    <color name="primary_A400">#4d73ff</color>
-    <color name="primary_A700">#4d69ff</color>
+    <color name="blue_50">#e7e9fd</color>
+    <color name="blue_100">#d0d9ff</color>
+    <color name="blue_200">#afbfff</color>
+    <color name="blue_300">#91a7ff</color>
+    <color name="blue_400">#738ffe</color>
+    <color name="blue_500">#5677fc</color>
+    <color name="blue_600">#4e6cef</color>
+    <color name="blue_700">#455ede</color>
+    <color name="blue_800">#3b50ce</color>
+    <color name="blue_900">#2a36b1</color>
+    <color name="blue_A100">#a6baff</color>
+    <color name="blue_A200">#6889ff</color>
+    <color name="blue_A400">#4d73ff</color>
+    <color name="blue_A700">#4d69ff</color>
 
     <!-- light blue-->
     <color name="light_blue_50">#e1f5fe</color>
@@ -232,20 +232,20 @@
     <color name="amber_A700">#ffab00</color>
 
     <!--orange-->
-    <color name="accent_50">#fff3e0</color>
-    <color name="accent_100">#ffe0b2</color>
-    <color name="accent_200">#ffcc80</color>
-    <color name="accent_300">#ffb74d</color>
-    <color name="accent_400">#ffa726</color>
-    <color name="accent_500">#ff9800</color>
-    <color name="accent_600">#fb8c00</color>
-    <color name="accent_700">#f57c00</color>
-    <color name="accent_800">#ef6c00</color>
-    <color name="accent_900">#e65100</color>
-    <color name="accent_A100">#ffd180</color>
-    <color name="accent_A200">#ffab40</color>
-    <color name="accent_A400">#ff9100</color>
-    <color name="accent_A700">#ff6d00</color>
+    <color name="orange_50">#fff3e0</color>
+    <color name="orange_100">#ffe0b2</color>
+    <color name="orange_200">#ffcc80</color>
+    <color name="orange_300">#ffb74d</color>
+    <color name="orange_400">#ffa726</color>
+    <color name="orange_500">#ff9800</color>
+    <color name="orange_600">#fb8c00</color>
+    <color name="orange_700">#f57c00</color>
+    <color name="orange_800">#ef6c00</color>
+    <color name="orange_900">#e65100</color>
+    <color name="orange_A100">#ffd180</color>
+    <color name="orange_A200">#ffab40</color>
+    <color name="orange_A400">#ff9100</color>
+    <color name="orange_A700">#ff6d00</color>
 
     <!--deep orange-->
     <color name="deep_orange_50">#fbe9e7</color>
