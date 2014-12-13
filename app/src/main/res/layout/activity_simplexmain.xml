@@ -1,8 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+              xmlns:fab="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -11,38 +11,51 @@
         android:minHeight="?attr/actionBarSize"
         android:background="?attr/colorPrimary">
 
-	    <EditText
-		    android:layout_weight="50"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:inputType="number"
-		    android:ems="10"
-		    android:textColor="@color/white"
-		    android:hint="@string/constraintHint"
-		    android:id="@+id/nConstraints"
-		    android:gravity="center" />
 
-	    <EditText
-		    android:layout_weight="50"
-		    android:layout_width="wrap_content"
+	    <LinearLayout
+		    android:orientation="horizontal"
+		    android:layout_width="match_parent"
 		    android:layout_height="wrap_content"
-		    android:inputType="number"
-		    android:ems="10"
-		    android:textColor="@color/white"
-		    android:id="@+id/nVariables"
-		    android:hint="@string/variablesHint"
-		    android:gravity="center" />
+		    android:weightSum="100">
+
+		    <EditText
+			    android:layout_weight="50"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:inputType="number"
+			    android:ems="10"
+			    android:hint="@string/constraintHint"
+			    android:id="@+id/nConstraints"
+			    android:gravity="center"
+			    android:textColorHint="@color/accent_500"
+			    android:textColor="@color/accent_500"/>
+
+		    <EditText
+			    android:layout_weight="50"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:inputType="number"
+			    android:ems="10"
+			    android:textColor="@color/accent_500"
+			    android:id="@+id/nVariables"
+			    android:hint="@string/variablesHint"
+			    android:gravity="center"
+			    android:textColorHint="@color/accent_500"/>
+
+	    </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:src="@drawable/ic_add_white_24dp"
+        fab:fab_type="normal"
         fab:fab_colorNormal="@color/accent_500"
         fab:fab_colorPressed="@color/accent_700"
         android:layout_gravity="end"
-        android:layout_marginTop="-26dp"
+        android:layout_marginTop="-28dp"
         android:layout_marginRight="16dp"
         android:layout_marginEnd="16dp"/>
 
