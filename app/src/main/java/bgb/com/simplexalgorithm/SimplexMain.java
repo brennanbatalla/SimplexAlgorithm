@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class simplexmain extends ActionBarActivity {
+public class SimplexMain extends ActionBarActivity {
 
 
 	EditText nConstraints;
@@ -45,7 +45,7 @@ public class simplexmain extends ActionBarActivity {
 		fab.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(simplexmain.this,"FAB",Toast.LENGTH_SHORT).show();
+				Toast.makeText(SimplexMain.this,"FAB",Toast.LENGTH_SHORT).show();
 			}
 		});
 
