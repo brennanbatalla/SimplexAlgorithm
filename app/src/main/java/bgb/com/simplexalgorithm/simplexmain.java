@@ -83,8 +83,10 @@ public class simplexmain extends ActionBarActivity {
 
     public void ObjFuncGen(Context context, int variables){
 
-        for(int i = 0; i <= variables; i++) {
-            List<EditText> etArray = new ArrayList<>();
+        List<EditText> etArray = new ArrayList<>();
+
+        for(int i = 1; i <= variables; i++) {
+
             LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
             EditText et = new EditText(context);

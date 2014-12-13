@@ -2,7 +2,36 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+        <!-- theme customizations -->
+        <!-- Main theme colors -->
+        <!--   your app's branding color (for the app bar) -->
+        <item name="colorPrimary">@color/primary_500</item>
+        <!--   darker variant of colorPrimary (for status bar, contextual app bars) -->
+        <item name="colorPrimaryDark">@color/primary_700</item>
+        <!--   theme UI controls like checkboxes and text fields -->
+        <item name="colorAccent">@color/accent_500</item>
+        <!--<item name="android:alertDialogTheme">@style/AlertDialog</item>-->
+    </style>
+
+    <style name="octaneTable">
+        <item name="android:background">@color/accent_100</item>
+        <item name="android:layout_margin">3dp</item>
+        <item name="android:height">48dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/accent_700</item>
+        <item name="android:textSize">@dimen/abc_text_size_display_1_material</item>
+    </style>
+
+    <style name="Button_Raised" parent="android:Widget.Button">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="Button_Raised.Primary">
+        <item name="android:background">@drawable/primary_round</item>
+    </style>
+
+    <style name="Button_Raised.Accent">
+        <item name="android:background">@drawable/accent_round</item>
     </style>
 
 </resources>

@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Simplex Algorithm</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Octane+</string>
+    <string name="title">Fuel Octane Rating Calculator</string>
+    <string name="info_text">Mixing two different fuels to obtain the correct octane
+        rating is a common amongst racing practices. Octane
+        ratings are used to maximize the performance of your
+        race engine. This tool will allow you to calculate
+        how much of each octane rating to use to get a desired
+        octane rating.</string>
+    <string name="disclaimer">Octane+ is a mathematical extrapolation tool only,
+        and is not meant to be for scientific calculations.
+        By accepting this statement, I agree that I am using
+        this app for informational purposes only and I am the
+        only person held responsible for any consequences in
+        using mixed fuels/octanes.</string>
+    <string name="disclaimer_show_again">Show when opening app</string>
+    <string name="show_disclaimer_option">Disclaimer</string>
+    <string name="show_saved_octanes">My Octanes</string>
+    <string name="desired_gallons">Desired Gallons</string>
+    <string name="desired_octane">Desired Octane</string>
+    <string name="lower_octane">Lower Octane</string>
+    <string name="higher_octane">Higher Octane</string>
+    <string name="calculate">Calculate</string>
+    <string name="reset">Reset</string>
+    <string name="octane">Octane</string>
+    <string name="gallonsToMix">Gallons To Mix</string>
+    <string name="saveToFavorites">Save to Favorites</string>
+    <string name="title_activity_list_saved_octanes">Saved Calculations</string>
+    <string name="newGallons">Gallons</string>
+    <string name="delete">Delete</string>
+    <string name="noFavoritesFound">There are no saved octane calculations on your favorites list.
+        After making a calculation, you may add it to your favorite list.</string>
 
 </resources>
