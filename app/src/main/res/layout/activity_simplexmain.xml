@@ -13,15 +13,43 @@
 
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        fab:fab_colorNormal="@color/primary_500"
-        fab:fab_colorPressed="@color/primary_700"
-        />
+        fab:fab_colorNormal="@color/accent_500"
+        fab:fab_colorPressed="@color/accent_700"
+        android:layout_gravity="right"
+        android:layout_marginTop="-26dp"
+        android:layout_marginRight="16dp"/>
 
-    <LinearLayout
+	<LinearLayout
+	    android:orientation="vertical"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:text="Objective Function:"
+	        android:id="@+id/textView" />
+
+	    <LinearLayout
+	        android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="94dp"
+	        android:id="@+id/EditTextGen"
+	        android:padding="5dp"></LinearLayout>
+
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textAppearance="?android:attr/textAppearanceLarge"
+	        android:text="Constraints:"
+	        android:id="@+id/textView2" />
+
+	</LinearLayout>
+
+	<LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent">
@@ -87,34 +115,6 @@
             android:id="@+id/equGen"
             android:layout_gravity="center_horizontal" />
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Objective Function:"
-                android:id="@+id/textView" />
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="94dp"
-                android:id="@+id/EditTextGen"
-                android:padding="5dp"></LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Constraints:"
-                android:id="@+id/textView2" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+	</LinearLayout>
 
 </LinearLayout>
