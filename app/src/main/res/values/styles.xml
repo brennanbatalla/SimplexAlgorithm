@@ -1,10 +1,9 @@
-<resources>
+<resources xmlns:app="http://schemas.android.com/apk/res/com.rengwuxian.materialedittext">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base"/>
 
-    <style name="AppTheme.Base" parent="Theme.AppCompat.Light">
-	    <item name="windowActionBar">false</item>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/primary_500</item>
         <item name="colorPrimaryDark">@color/primary_700</item>
 	    <item name="colorAccent">@color/accent_500</item>
@@ -30,5 +29,18 @@
     <style name="Button_Raised.Accent">
         <item name="android:background">@drawable/accent_round</item>
     </style>
+
+	<style name="constraintEditText">
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+		<item name="android:layout_marginLeft">16dp</item>
+		<item name="android:layout_marginRight">16dp</item>
+		<item name="android:hint">@string/constraintEntryHint</item>
+		<item name="android:textSize">16sp</item>
+		<item name="android:textCursorDrawable">@drawable/text_cursor_accent</item>
+		<item name="baseColor">@color/accent_900</item>
+		<item name="floatingLabel">highlight</item>
+		<item name="primaryColor">@color/accent_500</item>
+	</style>
 
 </resources>

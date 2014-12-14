@@ -1,24 +1,20 @@
 package bgb.com.simplexalgorithm;
 
 
-import android.content.Context;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.InputType;
 import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,46 +23,44 @@ import java.util.List;
 public class SimplexMain extends ActionBarActivity {
 
 
-	EditText nConstraints;
-	EditText nVariables;
-	Button equGenBUTTON;
+	MaterialEditText et_num_constraints, et_num_variables, et_constraints, et_objFunction;
+	FloatingActionButton btn_genConstraints;
+	List<EditText> etArray;
+	LinearLayout mLinearLayout;
+	LinearLayout.LayoutParams lp;
+	int numVariables;
+	int numConstraints;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_simplexmain);
 
-		Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-		setSupportActionBar(toolbar);
-		//toolbar.setTitle("Simplex");
+		et_num_constraints = (MaterialEditText) findViewById(R.id.et_num_constraints);  // scscsdvsv
+		et_num_variables = (MaterialEditText) findViewById(R.id.et_num_variables);
+		et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
 
-		FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-		fab.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(SimplexMain.this,"FAB",Toast.LENGTH_SHORT).show();
-			}
-		});
+		btn_genConstraints = (FloatingActionButton) findViewById(R.id.fab);
 
-		initialize();
+		etArray = new ArrayList<>();
+		mLinearLayout = (LinearLayout) findViewById(R.id.functionLayout);
+		lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+		lp.setMargins(16,0,16,0);
+
 		//Simplex now = new Simplex();
 
-		equGenBUTTON.setOnClickListener(new View.OnClickListener() {
+		btn_genConstraints.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.w("Next_Button", "You got here");
-				//equGen();
+				Log.w("SimplexMain", "onClick/generateInputs");
 
-
-				if (!nVariables.getText().toString().matches("") && Integer.parseInt(nVariables.getText().toString()) <= 6) {
-					int variables = Integer.parseInt(nVariables.getText().toString());
-					ObjFuncGen(getApplicationContext(), variables);
-				} else if (nVariables.getText().toString().matches("")) {
-
-					cheers("Please Input number of Variables");
-				} else {
-					cheers("Variables must be less than 7");
+				if (et_num_variables.getText().toString().matches("") || et_num_constraints.getText().toString().matches(""))
+					cheers("Missing # of variables or # of constraints");
+				else {
+					numConstraints = Integer.parseInt(et_num_constraints.getText().toString());
+					displayFunctionInputs(numConstraints);
 				}
 			}
 		});
@@ -97,67 +91,28 @@ public class SimplexMain extends ActionBarActivity {
 	}
 
 
-	public void ObjFuncGen(Context context, int variables){
+	public void displayFunctionInputs(int c){
 
-		List<EditText> etArray = new ArrayList<>();
+		et_objFunction.setVisibility(View.VISIBLE);
 
-		for(int i = 1; i <= variables; i++) {
+		if (mLinearLayout.getChildCount() > 0) {
+			mLinearLayout.removeViews(1,mLinearLayout.getChildCount()-1);
+		}
 
-			LinearLayout mLinearLayout = (LinearLayout) findViewById(R.id.EditTextGen);
-			LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-			EditText et = new EditText(context);
-			et.setLayoutParams(lp);
-			et.setSingleLine(false);
-			et.setInputType(InputType.TYPE_NUMBER_FLAG_SIGNED);
-			mLinearLayout.addView(et);
-			etArray.add(et);  // Add to list
+		for(int i = 1; i <= c; i++) {
 
+			et_constraints = new MaterialEditText(new ContextThemeWrapper(SimplexMain.this, R.style.constraintEditText));
+			lp.setMargins(16,0,16,0);
+			et_constraints.setLayoutParams(lp);
+			et_constraints.setHint("Constraint " + i);
+			mLinearLayout.addView(et_constraints);
 
-
-			TextView tv = new TextView(context);
-			tv.setLayoutParams(lp);
-			tv.setInputType(InputType.TYPE_CLASS_TEXT);
-			mLinearLayout.addView(tv);
-
-			switch(i){
-				case 0:
-					tv.setText("a1");
-					break;
-				case 1:
-					tv.setText("a2");
-					break;
-				case 2:
-					tv.setText("a3");
-					break;
-				case 3:
-					tv.setText("a4");
-					break;
-				case 4:
-					tv.setText("a5");
-					break;
-				case 5:
-					tv.setText("a6");
-					break;
-				case 6:
-					tv.setText("b");
-					break;
-				default:
-					cheers("How did you get here?");
-			}
-
-
-			tv.setTextColor(Color.BLACK);
+			etArray.add(et_constraints);
 
 		}
 
 	}
 
-	public void initialize() {
-		nConstraints = (EditText) findViewById(R.id.nConstraints);  // scscsdvsv
-		nVariables = (EditText) findViewById(R.id.nVariables);
-		equGenBUTTON = (Button) findViewById(R.id.equGen);
-
-	}
 
 	public void cheers(String message){
 		Toast.makeText(this, message,

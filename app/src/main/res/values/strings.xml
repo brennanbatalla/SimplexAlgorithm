@@ -3,9 +3,11 @@
 
     <string name="app_name">Simplex Solver</string>
     <string name="icon_description">A Simplex Algorithm Solver</string>
-	<string name="toolbar_fab_text">=</string>
-	<string name="constraintHint">Number of Constraints</string>
-	<string name="variablesHint">Number of Variables</string>
+	<string name="constraintHint"># of Constraints</string>
+	<string name="variablesHint"># of Variables</string>
+	<string name="bt_generate">Generate</string>
+	<string name="objectiveHint">Objective Function</string>
+	<string name="constraintEntryHint">Constraint</string>
 
 
 </resources>
