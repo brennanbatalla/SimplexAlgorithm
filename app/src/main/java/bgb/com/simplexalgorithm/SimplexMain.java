@@ -186,11 +186,13 @@ public class SimplexMain extends ActionBarActivity {
 		double[] x = s.primal();
 
 		String solution = "Solution is ";
-
+		double val;
 		for (int i = 0; i < x.length; i++) {
+
 			Log.e("Primal: ", "x[" + i + "] = " + x[i]);
 			solution += "x" + i + " = " + x[i] +", ";
 		}
+
 
 		solution = solution.substring(0,solution.length()-1);
 
