@@ -36,7 +36,7 @@ public class SimplexMain extends ActionBarActivity {
 	double[]   b;
 	int numVariables;
 	int numConstraints;
-	boolean VALID_INPUTS = true;
+	boolean VALID_INPUTS;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +56,9 @@ public class SimplexMain extends ActionBarActivity {
 		btn_solve.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				VALID_INPUTS = true;
+
+				// Checks inputs and sets VALID_INPUTS to false if necessary
 				checkInputs();
 
 				if(VALID_INPUTS) {
