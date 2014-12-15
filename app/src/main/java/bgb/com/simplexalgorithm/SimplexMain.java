@@ -24,7 +24,6 @@ import java.util.List;
 
 public class SimplexMain extends ActionBarActivity {
 
-
 	MaterialEditText et_num_constraints, et_num_variables, et_constraints, et_objFunction;
 	FloatingActionButton btn_genConstraints;
 	List<EditText> constraintsStringList;
@@ -32,148 +31,172 @@ public class SimplexMain extends ActionBarActivity {
 	LinearLayout.LayoutParams lp;
 	Button btn_solve;
 
-	double[] c;
+	double[]   c;
 	double[][] A;
-	double[] b;
+	double[]   b;
 	int numVariables;
 	int numConstraints;
+	boolean VALID_INPUTS = true;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_simplexmain);
 
-		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-		et_num_constraints = (MaterialEditText) findViewById(R.id.et_num_constraints);  // scscsdvsv
-		et_num_variables = (MaterialEditText) findViewById(R.id.et_num_variables);
-		et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
-
-		btn_genConstraints = (FloatingActionButton) findViewById(R.id.fab);
-
-		constraintsStringList = new ArrayList<>();
-		mLinearLayout = (LinearLayout) findViewById(R.id.functionLayout);
-		lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
-		lp.setMargins(16,0,16,0);
-
-		//Simplex now = new Simplex();
+		// Set up inputs and buttons
+		Initialize();
 
 		btn_genConstraints.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.w("SimplexMain", "onClick/generateInputs");
-
-				if (et_num_variables.getText().toString().matches("") || et_num_constraints.getText().toString().matches(""))
-					cheers("Missing # of variables or # of constraints");
-				else {
-					numConstraints = Integer.parseInt(et_num_constraints.getText().toString());
-					numVariables = Integer.parseInt(et_num_variables.getText().toString());
-					btn_solve.setVisibility(View.VISIBLE);
-					displayFunctionInputs(numConstraints);
-				}
+				generateInputs();
 			}
 		});
-
-		btn_solve = (Button) findViewById(R.id.solveButton);
 
 		btn_solve.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Log.w("SimplexMain", "onClick/solveButton");
+				checkInputs();
 
-				// Get and convert objective function to string array elements
-				String strObjFunction = et_objFunction.getText().toString();
-
-				// Remove x1...xn from objective function
-				for(int i = 0; i < numVariables; i++) {
-					strObjFunction = strObjFunction.replace("x"+i,"");
+				if(VALID_INPUTS) {
+					solveProblem();
+				} else {
+					Log.i("SimplexMain","solveOnClick: Invalid Inputs");
 				}
-
-				strObjFunction = strObjFunction.replace("+-","-");
-				strObjFunction = strObjFunction.replace("-","+-");
-				String[] strArrayObjFunc = strObjFunction.split("\\+");
-
-				Log.i("SimplexMain", "Coefficients: " + Arrays.toString(strArrayObjFunc));
-
-				c = new double[numVariables];
-				A = new double[numConstraints][numVariables];
-				b = new double[numConstraints];
-
-				for (int i = 0; i < strArrayObjFunc.length; i++) {
-					c[i] = Double.parseDouble(strArrayObjFunc[i]);
-				}
-
-
-
-				String[] constraints = new String[numConstraints];
-				String[] constraintsCoeff = new String[numConstraints];
-				String[] constraintsEquals = new String[numConstraints];
-
-
-				for (int i = 0; i < constraintsStringList.size(); i++) {
-					constraints[i] = constraintsStringList.get(i).getText().toString();
-					constraints[i] = constraints[i].replace("+-","-");
-					constraints[i] = constraints[i].replace("-", "+-");
-					if(constraints[i].startsWith("+")) {
-						constraints[i] = constraints[i].substring(1);
-					}
-
-					for(int j = 0; j <numVariables; j++) {
-						constraints[i] = constraints[i].replace("x"+j,"");
-					}
-
-					constraintsCoeff[i] = constraints[i].split("=")[0];
-					constraintsEquals[i] = constraints[i].split("=")[1];
-
-					if(constraintsEquals[i].startsWith("+")) {
-						constraintsEquals[i] = constraintsEquals[i].substring(1);
-					}
-				}
-
-				Log.i("SimplexMain", " ConstraintsCoeff: " + Arrays.toString(constraintsCoeff));
-				Log.i("SimplexMain", "ConstraintsEquals: " + Arrays.toString(constraintsEquals));
-
-				String temp[];
-				for(int i = 0; i < numConstraints; i++) {
-					temp = constraintsCoeff[i].split("\\+");
-					b[i] =  Double.parseDouble(constraintsEquals[i]);
-					for(int j = 0; j < numVariables; j++) {
-						A[i][j] =  Double.parseDouble(temp[j]);
-					}
-				}
-
-
-				Log.i("SimplexMain", "C:" + Arrays.toString(c));
-				Log.i("SimplexMain", "b:" + Arrays.toString(b));
-				for(int i = 0; i < numConstraints; i++) {
-					Log.i("SimplexMain", "A[" + i + "]:" + Arrays.toString(A[i]));
-				}
-
-
-				Simplex s = new Simplex(A,b,c);
-
-				double[] x = s.primal();
-
-				String solution = "Solution is ";
-
-				for (int i = 0; i < x.length; i++) {
-					Log.e("Primal: ", "x[" + i + "] = " + x[i]);
-					solution += "x" + i + " = " + x[i] +", ";
-				}
-
-				solution = solution.substring(0,solution.length()-1);
-
-				double[] y = s.dual();
-				for (int j = 0; j < y.length; j++)
-					Log.e("Dual: ","y[" + j + "] = " + y[j]);
-
-
-				Toast.makeText(SimplexMain.this,solution,Toast.LENGTH_LONG).show();
 
 			}
 		});
 	}
 
+	private void Initialize() {
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+		et_num_constraints = (MaterialEditText) findViewById(R.id.et_num_constraints);
+		et_num_variables = (MaterialEditText) findViewById(R.id.et_num_variables);
+		et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
+
+		btn_genConstraints = (FloatingActionButton) findViewById(R.id.fab);
+		btn_solve = (Button) findViewById(R.id.solveButton);
+
+		constraintsStringList = new ArrayList<>();
+		mLinearLayout = (LinearLayout) findViewById(R.id.functionLayout);
+		lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+	}
+
+	private void generateInputs() {
+		Log.i("SimplexMain", "onClick/generateInputs");
+
+		if (et_num_variables.getText().toString().matches("") || et_num_constraints.getText().toString().matches(""))
+			Cheers("Missing # of variables or # of constraints");
+		else {
+			numConstraints = Integer.parseInt(et_num_constraints.getText().toString());
+			numVariables = Integer.parseInt(et_num_variables.getText().toString());
+			btn_solve.setVisibility(View.VISIBLE);
+			displayFunctionInputs(numConstraints);
+		}
+	}
+
+	private void checkInputs() {
+		if(et_objFunction.getText().toString().matches("")) {
+			VALID_INPUTS = false;
+			Cheers("Objective function cannot be empty!");
+		} else {
+			for(int i = 0; i < numConstraints; i++) {
+				if(constraintsStringList.get(i).getText().toString().matches("")) {
+					Cheers("Constraint inputs cannot be empty!");
+					VALID_INPUTS = false;
+					break;
+				}
+			}
+		}
+	}
+
+	private void solveProblem() {
+		Log.i("SimplexMain", "onClick/solveButton");
+
+		// Get and convert objective function to string array elements
+		String strObjFunction = et_objFunction.getText().toString();
+
+		// Remove x1...xn from objective function
+		for(int i = 0; i < numVariables; i++) {
+			strObjFunction = strObjFunction.replace("x"+i,"");
+		}
+
+		strObjFunction = strObjFunction.replace("+-","-");
+		strObjFunction = strObjFunction.replace("-","+-");
+		String[] strArrayObjFunc = strObjFunction.split("\\+");
+
+		Log.i("SimplexMain", "Coefficients: " + Arrays.toString(strArrayObjFunc));
+
+		c = new double[numVariables];
+		A = new double[numConstraints][numVariables];
+		b = new double[numConstraints];
+
+		for (int i = 0; i < strArrayObjFunc.length; i++) {
+			c[i] = Double.parseDouble(strArrayObjFunc[i]);
+		}
+
+		String[] constraints = new String[numConstraints];
+		String[] constraintsCoeff = new String[numConstraints];
+		String[] constraintsEquals = new String[numConstraints];
+
+		for (int i = 0; i < constraintsStringList.size(); i++) {
+			constraints[i] = constraintsStringList.get(i).getText().toString();
+			constraints[i] = constraints[i].replace("+-","-");
+			constraints[i] = constraints[i].replace("-", "+-");
+			if(constraints[i].startsWith("+")) {
+				constraints[i] = constraints[i].substring(1);
+			}
+
+			for(int j = 0; j <numVariables; j++) {
+				constraints[i] = constraints[i].replace("x"+j,"");
+			}
+
+			constraintsCoeff[i] = constraints[i].split("=")[0];
+			constraintsEquals[i] = constraints[i].split("=")[1];
+
+			if(constraintsEquals[i].startsWith("+")) {
+				constraintsEquals[i] = constraintsEquals[i].substring(1);
+			}
+		}
+
+		Log.i("SimplexMain", " ConstraintsCoeff: " + Arrays.toString(constraintsCoeff));
+		Log.i("SimplexMain", "ConstraintsEquals: " + Arrays.toString(constraintsEquals));
+
+		String temp[];
+		for(int i = 0; i < numConstraints; i++) {
+			temp = constraintsCoeff[i].split("\\+");
+			b[i] =  Double.parseDouble(constraintsEquals[i]);
+			for(int j = 0; j < numVariables; j++) {
+				A[i][j] =  Double.parseDouble(temp[j]);
+			}
+		}
+
+		Log.i("SimplexMain", "C:" + Arrays.toString(c));
+		Log.i("SimplexMain", "b:" + Arrays.toString(b));
+		for(int i = 0; i < numConstraints; i++) {
+			Log.i("SimplexMain", "A[" + i + "]:" + Arrays.toString(A[i]));
+		}
+
+		Simplex s = new Simplex(A,b,c);
+
+		double[] x = s.primal();
+
+		String solution = "Solution is ";
+
+		for (int i = 0; i < x.length; i++) {
+			Log.e("Primal: ", "x[" + i + "] = " + x[i]);
+			solution += "x" + i + " = " + x[i] +", ";
+		}
+
+		solution = solution.substring(0,solution.length()-1);
+
+		double[] y = s.dual();
+		for (int j = 0; j < y.length; j++)
+			Log.e("Dual: ","y[" + j + "] = " + y[j]);
+
+		Toast.makeText(SimplexMain.this,solution,Toast.LENGTH_LONG).show();
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -187,7 +210,7 @@ public class SimplexMain extends ActionBarActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
+		// int id = item.getItemId();
 
 		//noinspection SimplifiableIfStatement
        /* if (id == R.id.action_settings) {
@@ -209,7 +232,6 @@ public class SimplexMain extends ActionBarActivity {
 		for(int i = 1; i <= c; i++) {
 
 			et_constraints = new MaterialEditText(new ContextThemeWrapper(SimplexMain.this, R.style.constraintEditText));
-			lp.setMargins(16,0,16,0);
 			et_constraints.setLayoutParams(lp);
 			et_constraints.setHint("Constraint " + i);
 			mLinearLayout.addView(et_constraints);
@@ -221,7 +243,7 @@ public class SimplexMain extends ActionBarActivity {
 	}
 
 
-	public void cheers(String message){
+	public void Cheers(String message){
 		Toast.makeText(this, message,
 				Toast.LENGTH_LONG).show();
 	}
@@ -232,10 +254,10 @@ public class SimplexMain extends ActionBarActivity {
 
 /*        public void test(double[][] A, double[] b, double[] c) {
             Simplex lp = new Simplex(A, b, c);
-            cheers("value = " + lp.value());
+            Cheers("value = " + lp.value());
             double[] x = lp.primal();
             for (int i = 0; i < x.length; i++)
-                cheers("x[" + i + "] = " + x[i]);
+                Cheers("x[" + i + "] = " + x[i]);
             double[] y = lp.dual();
             for (int j = 0; j < y.length; j++)
                 StdOut.println("y[" + j + "] = " + y[j]);
@@ -297,7 +319,7 @@ public class SimplexMain extends ActionBarActivity {
 
             try                           { test1();             }
             catch (ArithmeticException e) { e.printStackTrace(); }
-            cheers("--------------------------------");
+            Cheers("--------------------------------");
 
             try                           { test2();             }
             catch (ArithmeticException e) { e.printStackTrace(); }
