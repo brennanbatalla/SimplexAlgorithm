@@ -131,8 +131,13 @@ public class SimplexMain extends ActionBarActivity {
 
 		Log.i("SimplexMain", "Coefficients: " + Arrays.toString(strArrayObjFunc));
 
+		// Objective Function
 		c = new double[numVariables];
+
+		// Constraint coefficients
 		A = new double[numConstraints][numVariables];
+
+		//Constraint equals
 		b = new double[numConstraints];
 
 		for (int i = 0; i < strArrayObjFunc.length; i++) {
@@ -186,13 +191,12 @@ public class SimplexMain extends ActionBarActivity {
 		double[] x = s.primal();
 
 		String solution = "Solution is ";
-		double val;
+		double optimalValue = 0;
 		for (int i = 0; i < x.length; i++) {
-
+			optimalValue +=  c[i]*x[i];
 			Log.e("Primal: ", "x[" + i + "] = " + x[i]);
 			solution += "x" + i + " = " + x[i] +", ";
 		}
-
 
 		solution = solution.substring(0,solution.length()-1);
 
@@ -200,7 +204,8 @@ public class SimplexMain extends ActionBarActivity {
 		for (int j = 0; j < y.length; j++)
 			Log.e("Dual: ","y[" + j + "] = " + y[j]);
 
-		Toast.makeText(SimplexMain.this,solution,Toast.LENGTH_LONG).show();
+		Cheers(solution);
+		Cheers("Optimal: " + optimalValue);
 	}
 
 	@Override
@@ -259,7 +264,7 @@ public class SimplexMain extends ActionBarActivity {
 
 /*        public void test(double[][] A, double[] b, double[] c) {
             Simplex lp = new Simplex(A, b, c);
-            Cheers("value = " + lp.value());
+            Cheers("value = " + lp.optimalValueue());
             double[] x = lp.primal();
             for (int i = 0; i < x.length; i++)
                 Cheers("x[" + i + "] = " + x[i]);
@@ -352,5 +357,5 @@ public class SimplexMain extends ActionBarActivity {
                 for (int j = 0; j < N; j++)
                     A[i][j] = StdRandom.uniform(100);
             Simplex lp = new Simplex(A, b, c);
-            StdOut.println(lp.value());
+            StdOut.println(lp.optimalValueue());
         }*/
