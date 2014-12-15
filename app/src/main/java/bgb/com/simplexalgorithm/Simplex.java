@@ -2,11 +2,6 @@ package bgb.com.simplexalgorithm;
 
 import android.util.Log;
 
-/**
- * Created by brennan on 12/11/2014.
- */
-
-
         public class Simplex {
         private static String TAG = "Simplex";
 
