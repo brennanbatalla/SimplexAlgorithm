@@ -3,12 +3,14 @@
 
     <string name="app_name">Simplex Solver</string>
     <string name="icon_description">A Simplex Algorithm Solver</string>
-	<string name="constraintHint"># of Constraints</string>
-	<string name="variablesHint"># of Variables</string>
-	<string name="bt_generate">Generate</string>
-	<string name="objectiveHint">Objective Function</string>
-	<string name="constraintEntryHint">Constraint</string>
-	<string name="solve">Solve</string>
-
+    <string name="constraintHint"># of Constraints</string>
+    <string name="variablesHint"># of Variables</string>
+    <string name="bt_generate">Generate</string>
+    <string name="objectiveHint">Objective Function</string>
+    <string name="constraintEntryHint">Constraint</string>
+    <string name="solve">Solve</string>
+    <string name="title_activity_matrix">MatrixActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

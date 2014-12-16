@@ -1,6 +1,8 @@
 package bgb.com.simplexalgorithm;
 
 
+import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -220,15 +222,24 @@ public class SimplexMain extends ActionBarActivity {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
-		// int id = item.getItemId();
+
 
 		//noinspection SimplifiableIfStatement
-       /* if (id == R.id.action_settings) {
-            return true;
-        }
-*/
+        ActionBar bar = getActionBar();
+        //int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_bar:
+                return true;
+
+            case R.id.matrixInput:
+                Intent matrixIntent = new Intent(this, MatrixActivity.class);
+                startActivity(matrixIntent);
+                finish();
+                return true;
+            default:
 		return super.onOptionsItemSelected(item);
-	}
+	    }
+    }
 
 
 	public void displayFunctionInputs(int c){
@@ -292,7 +303,8 @@ public class SimplexMain extends ActionBarActivity {
             double[] c = {  13.0,  23.0 };
             double[] b = { 480.0, 160.0, 1190.0 };
             double[][] A = {
-                    {  5.0, 15.0 },
+                    constraints[i] = constraints[i].replace("+-","-");
+			constraints[i] = constraints[i].replace("-", "+-");{  5.0, 15.0 },
                     {  4.0,  4.0 },
                     { 35.0, 20.0 },
             };

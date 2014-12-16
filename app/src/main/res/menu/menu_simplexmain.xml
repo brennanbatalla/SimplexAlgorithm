@@ -10,4 +10,11 @@
 	      android:title="Item 2"
 	      android:orderInCategory="2"
 	      app:showAsAction="never" />
+
+    <item android:id="@+id/matrixInput"
+        android:title="Matrix Input"
+        android:orderInCategory="3"
+        app:showAsAction="never"
+        android:icon="@drawable/matrixlogo"/>
+
 </menu>
