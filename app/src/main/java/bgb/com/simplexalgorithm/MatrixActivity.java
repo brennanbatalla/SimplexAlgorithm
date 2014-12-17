@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.melnykov.fab.FloatingActionButton;
 import com.rengwuxian.materialedittext.MaterialEditText;
+import com.rengwuxian.materialedittext.validation.RegexpValidator;
 
 import java.util.Arrays;
 
@@ -39,18 +40,40 @@ public class MatrixActivity extends ActionBarActivity {
         eqButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("Buttonlistener", "HERE");
-                int numCol = Integer.parseInt(numVar.getText().toString());
-                int numRow = Integer.parseInt(numConst.getText().toString());
-                EquationGenerator(numCol, numRow);
-                solve.setVisibility(View.VISIBLE);
+                Log.e("InputButtonlistener", "HERE");
+
+                if(!numVar.getText().toString().matches("") && !numConst.getText().toString().matches("")){
+                    int numCol = Integer.parseInt(numVar.getText().toString());
+                    int numRow = Integer.parseInt(numConst.getText().toString());
+                    EquationGenerator(numCol, numRow);
+                    solve.setVisibility(View.VISIBLE);
+                }
             }
         });
 
         solve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean VALID = false;
+                int numCol = Integer.parseInt(numVar.getText().toString());
+                int numRow = Integer.parseInt(numConst.getText().toString());
+                TableLayout tblLayout = (TableLayout)findViewById(R.id.functionLayout);
+
+//                for (int i = 0; i<= numRow;i++){
+//                    TableRow consCol = (TableRow) tblLayout.getChildAt(i);
+//                    for (int j = 0; j < numCol;j++ ){
+//
+//                        MaterialEditText et = (MaterialEditText) consCol.getChildAt(j);
+//                        Boolean Set = et.validateWith(new RegexpValidator("Only Integer Valid!", "\\d+"));
+//
+//
+//                        A[i-1][j] =  Double.parseDouble(et.getText().toString());
+//                        Log.e("A/constraints", et.getText().toString());
+//                    }
+//                }
+
                 solveProblem();
+
             }
         });
 
@@ -118,6 +141,10 @@ public class MatrixActivity extends ActionBarActivity {
 
         }
 
+        TableRow last = (TableRow) table.getChildAt(0);
+        EditText Lastet = (EditText) last.getChildAt(numcolumns);
+        Lastet.setVisibility(View.INVISIBLE);
+
     }
 
 
@@ -164,10 +191,6 @@ public class MatrixActivity extends ActionBarActivity {
             b[i-1] =  Double.parseDouble(et.getText().toString());
 
         }
-
-
-
-
                 //Log.e("C",c.toString());
 
         Simplex s = new Simplex(A,b,c);
