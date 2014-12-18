@@ -11,13 +11,17 @@
             android:name=".SimplexMain"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
-
         </activity>
         <activity
             android:name=".MatrixActivity"
             android:label="@string/title_activity_matrix" >
+        </activity>
+        <activity
+            android:name=".InputActivity"
+            android:label="@string/title_activity_input" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

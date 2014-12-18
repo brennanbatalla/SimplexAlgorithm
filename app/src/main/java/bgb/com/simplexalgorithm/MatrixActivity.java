@@ -22,13 +22,15 @@ import java.util.Arrays;
 
 public class MatrixActivity extends ActionBarActivity {
 
-    MaterialEditText numVar;
-    MaterialEditText numConst;
+
     FloatingActionButton eqButton;
     Button solve;
     double[]   c;
     double[][] A;
     double[]   b;
+    int numVar;
+    int numCon;
+    String minmaxTF;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,26 +39,16 @@ public class MatrixActivity extends ActionBarActivity {
 
         initialize();
 
-        eqButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.e("InputButtonlistener", "HERE");
+        int numVar =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
+        int numCon =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
+        minmaxTF = getIntent().getExtras().get("minOrmax").toString();  // will be used to find min or max.
 
-                if(!numVar.getText().toString().matches("") && !numConst.getText().toString().matches("")){
-                    int numCol = Integer.parseInt(numVar.getText().toString());
-                    int numRow = Integer.parseInt(numConst.getText().toString());
-                    EquationGenerator(numCol, numRow);
-                    solve.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+        EquationGenerator(numVar, numCon);
 
         solve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean VALID = false;
-                int numCol = Integer.parseInt(numVar.getText().toString());
-                int numRow = Integer.parseInt(numConst.getText().toString());
                 TableLayout tblLayout = (TableLayout)findViewById(R.id.functionLayout);
 
 //                for (int i = 0; i<= numRow;i++){
@@ -104,8 +96,7 @@ public class MatrixActivity extends ActionBarActivity {
 
     public void initialize(){
 
-        numConst = (MaterialEditText) findViewById(R.id.et_num_constraints);
-        numVar = (MaterialEditText)  findViewById(R.id.et_num_variables);
+
         eqButton = (FloatingActionButton) findViewById(R.id.fab);
         solve = (Button) findViewById(R.id.solveButton);
           }
@@ -150,8 +141,9 @@ public class MatrixActivity extends ActionBarActivity {
 
     private void solveProblem() {
         Log.i("SimplexMain", "onClick/solveButton");
-        int numCol = Integer.parseInt(numVar.getText().toString());
-        int numRow = Integer.parseInt(numConst.getText().toString());
+
+        int numCol = numVar;
+        int numRow = numCon;
 
         // Objective Function
         c = new double[numCol];

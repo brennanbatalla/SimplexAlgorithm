@@ -16,7 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#2196F3"
+            android:background="?colorPrimary"
             android:orientation="vertical"
             android:paddingBottom="28dp"
             android:paddingLeft="72dp"
@@ -24,45 +24,14 @@
             android:paddingTop="16dp"
             android:id="@+id/helloo">
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/et_num_variables"
-                android:hint="@string/variablesHint"
-                android:inputType="number"
-                android:textCursorDrawable="@drawable/text_cursor_accent"
-                android:textSize="16sp"
-                app:baseColor="@android:color/white"
-                app:floatingLabel="highlight"
-                app:primaryColor="@color/primary_200" />
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/et_num_constraints"
-                android:hint="@string/constraintHint"
-                android:inputType="number"
-                android:textSize="16sp"
-                android:textCursorDrawable="@drawable/text_cursor_accent"
-                app:baseColor="@android:color/white"
-                app:floatingLabel="highlight"
-                app:primaryColor="@color/primary_200"
-                android:layout_marginBottom="10dp"/>
+
+
 
         </LinearLayout>
 
 
-        <com.melnykov.fab.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_white_24dp"
-            fab:fab_type="normal"
-            fab:fab_colorNormal="@color/accent_500"
-            fab:fab_colorPressed="@color/accent_700"
-            android:layout_marginTop="-28dp"
-            android:layout_marginLeft="16dp"
-            android:orientation="vertical" />
+
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -92,7 +61,7 @@
             android:id="@+id/solveButton"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:textColor="@color/white"
             android:layout_gravity="center_horizontal"/>
 

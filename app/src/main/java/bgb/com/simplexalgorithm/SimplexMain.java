@@ -26,13 +26,16 @@ import java.util.List;
 
 public class SimplexMain extends ActionBarActivity {
 
-	MaterialEditText et_num_constraints, et_num_variables, et_constraints, et_objFunction;
+	MaterialEditText et_constraints, et_objFunction;
 	FloatingActionButton btn_genConstraints;
 	List<EditText> constraintsStringList;
 	LinearLayout mLinearLayout;
 	LinearLayout.LayoutParams lp;
 	Button btn_solve;
 
+    int numVar;
+    int numCon;
+    String minmaxTF;
 	double[]   c;
 	double[][] A;
 	double[]   b;
@@ -42,45 +45,26 @@ public class SimplexMain extends ActionBarActivity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_simplexmain);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_simplexmain);
 
-		// Set up inputs and buttons
-		Initialize();
+        // Set up inputs and buttons
+        Initialize();
 
-		btn_genConstraints.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				generateInputs();
-			}
-		});
+        numVar =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
+        numCon =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
+        minmaxTF = getIntent().getExtras().get("minOrmax").toString();  // will be used to find min or max.
 
-		btn_solve.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				VALID_INPUTS = true;
-
-				// Checks inputs and sets VALID_INPUTS to false if necessary
-				checkInputs();
-
-				if(VALID_INPUTS) {
-					solveProblem();
-				} else {
-					Log.i("SimplexMain","solveOnClick: Invalid Inputs");
-				}
-
-			}
-		});
-	}
+        generateInputs();
+    }
 
 	private void Initialize() {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-		et_num_constraints = (MaterialEditText) findViewById(R.id.et_num_constraints);
-		et_num_variables = (MaterialEditText) findViewById(R.id.et_num_variables);
+
 		et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
 
-		btn_genConstraints = (FloatingActionButton) findViewById(R.id.fab);
+
 		btn_solve = (Button) findViewById(R.id.solveButton);
 
 		constraintsStringList = new ArrayList<>();
@@ -91,14 +75,11 @@ public class SimplexMain extends ActionBarActivity {
 	private void generateInputs() {
 		Log.i("SimplexMain", "onClick/generateInputs");
 
-		if (et_num_variables.getText().toString().matches("") || et_num_constraints.getText().toString().matches(""))
-			Cheers("Missing # of variables or # of constraints");
-		else {
-			numConstraints = Integer.parseInt(et_num_constraints.getText().toString());
-			numVariables = Integer.parseInt(et_num_variables.getText().toString());
+			numConstraints = numCon;
+			numVariables = numVar;
 			btn_solve.setVisibility(View.VISIBLE);
 			displayFunctionInputs(numConstraints);
-		}
+
 	}
 
 	private void checkInputs() {
@@ -243,8 +224,6 @@ public class SimplexMain extends ActionBarActivity {
 
 
 	public void displayFunctionInputs(int c){
-
-		et_objFunction.setVisibility(View.VISIBLE);
 
 		if (mLinearLayout.getChildCount() > 0) {
 			mLinearLayout.removeViews(1,mLinearLayout.getChildCount()-1);
