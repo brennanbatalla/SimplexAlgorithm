@@ -89,16 +89,17 @@
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Minimum"
-                    android:id="@+id/minRadioButton"
-                    android:checked="false" />
+                    android:text="Maximum"
+                    android:id="@+id/maxRadioButton"
+                    android:checked="true" />
 
                 <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Maximum"
-                    android:id="@+id/maxRadioButton"
+                    android:text="Minimum"
+                    android:id="@+id/minRadioButton"
                     android:checked="false" />
+
             </RadioGroup>
 
             <TextView
@@ -120,7 +121,7 @@
                     android:layout_height="wrap_content"
                     android:text="Matrix Input"
                     android:id="@+id/mInputRadioButton"
-                    android:checked="false" />
+                    android:checked="true" />
 
                 <RadioButton
                     android:layout_width="wrap_content"

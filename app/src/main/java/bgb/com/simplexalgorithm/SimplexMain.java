@@ -60,9 +60,10 @@ public class SimplexMain extends ActionBarActivity {
 
 	private void Initialize() {
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+       // getSupportActionBar().setHomeButtonEnabled(true);
+        //setContentView(R.layout.home);
 
-
-		et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
+        et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
 
 
 		btn_solve = (Button) findViewById(R.id.solveButton);
@@ -211,10 +212,8 @@ public class SimplexMain extends ActionBarActivity {
         switch (item.getItemId()) {
             case R.id.action_bar:
                 return true;
-
-            case R.id.matrixInput:
-                Intent matrixIntent = new Intent(this, MatrixActivity.class);
-                startActivity(matrixIntent);
+            case android.R.id.home:
+                Log.e("Home Button", "Clicking Home");
                 finish();
                 return true;
             default:

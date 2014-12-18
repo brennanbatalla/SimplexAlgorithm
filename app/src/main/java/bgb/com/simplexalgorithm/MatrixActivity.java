@@ -1,5 +1,6 @@
 package bgb.com.simplexalgorithm;
 
+import android.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -84,18 +85,22 @@ public class MatrixActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        ActionBar bar = getActionBar();
+        //int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_bar:
+                return true;
+            case android.R.id.home:
+                Log.e("Home Button", "Clicking Home");
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
-
-        return super.onOptionsItemSelected(item);
     }
 
     public void initialize(){
-
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         eqButton = (FloatingActionButton) findViewById(R.id.fab);
         solve = (Button) findViewById(R.id.solveButton);
