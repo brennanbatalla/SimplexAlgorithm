@@ -72,7 +72,7 @@ public class InputActivity extends ActionBarActivity {
                     // Matrix Input and Min
                 if(matoreqq == true && minormax == true){
 
-                    Intent myIntent = new Intent(getApplicationContext(), MatrixActivity.class);
+                    Intent myIntent = new Intent(getApplicationContext(), MatrixInput.class);
                     myIntent.putExtra("numVar", numVar.getText().toString());
                     myIntent.putExtra("numCon", numCon.getText().toString());
                     myIntent.putExtra("minOrmax", minormax);
@@ -84,7 +84,7 @@ public class InputActivity extends ActionBarActivity {
                 // Matrix Input and Max
                 else if(matoreqq == true && minormax == false){
 
-                    Intent myIntent = new Intent(getApplicationContext(), MatrixActivity.class);
+                    Intent myIntent = new Intent(getApplicationContext(), MatrixInput.class);
                     myIntent.putExtra("numVar", numVar.getText().toString());
                     myIntent.putExtra("numCon", numCon.getText().toString());
                     myIntent.putExtra("minOrmax", minormax);
@@ -94,7 +94,7 @@ public class InputActivity extends ActionBarActivity {
                 // Equation Input and Min
                 else if(matoreqq == false && minormax == true){
 
-                    Intent myIntent = new Intent(getApplicationContext(), SimplexMain.class);
+                    Intent myIntent = new Intent(getApplicationContext(), EquationInput.class);
                     myIntent.putExtra("numVar", numVar.getText().toString());
                     myIntent.putExtra("numCon", numCon.getText().toString());
                     myIntent.putExtra("minOrmax", minormax);
@@ -103,7 +103,7 @@ public class InputActivity extends ActionBarActivity {
                 }
                 // Equation Input and Max
                 else{
-                    Intent myIntent = new Intent(getApplicationContext(), SimplexMain.class);
+                    Intent myIntent = new Intent(getApplicationContext(), EquationInput.class);
                     myIntent.putExtra("numVar", numVar.getText().toString());
                     myIntent.putExtra("numCon", numCon.getText().toString());
                     myIntent.putExtra("minOrmax", minormax);

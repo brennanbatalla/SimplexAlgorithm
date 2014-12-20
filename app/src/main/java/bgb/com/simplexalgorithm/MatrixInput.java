@@ -21,7 +21,7 @@ import com.rengwuxian.materialedittext.validation.RegexpValidator;
 import java.util.Arrays;
 
 
-public class MatrixActivity extends ActionBarActivity {
+public class MatrixInput extends ActionBarActivity {
 
 
     FloatingActionButton eqButton;

@@ -2,7 +2,6 @@ package bgb.com.simplexalgorithm;
 
 
 import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -24,7 +23,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class SimplexMain extends ActionBarActivity {
+public class EquationInput extends ActionBarActivity {
 
 	MaterialEditText et_constraints, et_objFunction;
 	FloatingActionButton btn_genConstraints;
@@ -230,7 +229,7 @@ public class SimplexMain extends ActionBarActivity {
 
 		for(int i = 1; i <= c; i++) {
 
-			et_constraints = new MaterialEditText(new ContextThemeWrapper(SimplexMain.this, R.style.constraintEditText));
+			et_constraints = new MaterialEditText(new ContextThemeWrapper(EquationInput.this, R.style.constraintEditText));
 			et_constraints.setLayoutParams(lp);
 			et_constraints.setHint("Constraint " + i);
 			mLinearLayout.addView(et_constraints);

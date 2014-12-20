@@ -8,12 +8,12 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".SimplexMain"
+            android:name=".EquationInput"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name=".MatrixActivity"
+            android:name=".MatrixInput"
             android:label="@string/title_activity_matrix" >
         </activity>
         <activity
