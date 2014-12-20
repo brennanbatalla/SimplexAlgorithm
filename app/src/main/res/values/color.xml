@@ -8,20 +8,20 @@
          -->
 
     <!--reds-->
-    <color name="red_50">#fde0dc</color>
-    <color name="red_100">#f9bdbb</color>
-    <color name="red_200">#f69988</color>
-    <color name="red_300">#f36c60</color>
-    <color name="red_400">#e84e40</color>
-    <color name="red_500">#e51c23</color>
-    <color name="red_600">#dd191d</color>
-    <color name="red_700">#d01716</color>
-    <color name="red_800">#c41411</color>
-    <color name="red_900">#b0120a</color>
-    <color name="red_A100">#ff7997</color>
-    <color name="red_A200">#ff5177</color>
-    <color name="red_A400">#ff2d6f</color>
-    <color name="red_A700">#e00032</color>
+    <color name="primary_50">#fde0dc</color>
+    <color name="primary_100">#f9bdbb</color>
+    <color name="primary_200">#f69988</color>
+    <color name="primary_300">#f36c60</color>
+    <color name="primary_400">#e84e40</color>
+    <color name="primary_500">#e51c23</color>
+    <color name="primary_600">#dd191d</color>
+    <color name="primary_700">#d01716</color>
+    <color name="primary_800">#c41411</color>
+    <color name="primary_900">#b0120a</color>
+    <color name="primary_A100">#ff7997</color>
+    <color name="primary_A200">#ff5177</color>
+    <color name="primary_A400">#ff2d6f</color>
+    <color name="primary_A700">#e00032</color>
 
     <!-- pink_s -->
     <color name="pink_50">#fce4ec</color>
@@ -72,20 +72,20 @@
     <color name="deep_purple_A700">#6200ea</color>
 
     <!-- indigo -->
-    <color name="indigo_50">#e8eaf6</color>
-    <color name="indigo_100">#c5cae9</color>
-    <color name="indigo_200">#9fa8da</color>
-    <color name="indigo_300">#7986cb</color>
-    <color name="indigo_400">#5c6bc0</color>
-    <color name="indigo_500">#3f51b5</color>
-    <color name="indigo_600">#3949ab</color>
-    <color name="indigo_700">#303f9f</color>
-    <color name="indigo_800">#283593</color>
-    <color name="indigo_900">#1a237e</color>
-    <color name="indigo_A100">#8c9eff</color>
-    <color name="indigo_A200">#536dfe</color>
-    <color name="indigo_A400">#3d5afe</color>
-    <color name="indigo_A700">#304ffe</color>
+    <color name="accent_50">#e8eaf6</color>
+    <color name="accent_100">#c5cae9</color>
+    <color name="accent_200">#9fa8da</color>
+    <color name="accent_300">#7986cb</color>
+    <color name="accent_400">#5c6bc0</color>
+    <color name="accent_500">#3f51b5</color>
+    <color name="accent_600">#3949ab</color>
+    <color name="accent_700">#303f9f</color>
+    <color name="accent_800">#283593</color>
+    <color name="accent_900">#1a237e</color>
+    <color name="accent_A100">#8c9eff</color>
+    <color name="accent_A200">#536dfe</color>
+    <color name="accent_A400">#3d5afe</color>
+    <color name="accent_A700">#304ffe</color>
 
     <!--blue-->
     <color name="blue_50">#e7e9fd</color>
@@ -168,36 +168,36 @@
     <color name="green_A700">#12c700</color>
 
     <!--light green-->
-    <color name="primary_50">#f1f8e9</color>
-    <color name="primary_100">#dcedc8</color>
-    <color name="primary_200">#c5e1a5</color>
-    <color name="primary_300">#aed581</color>
-    <color name="primary_400">#9ccc65</color>
-    <color name="primary_500">#8bc34a</color>
-    <color name="primary_600">#7cb342</color>
-    <color name="primary_700">#689f38</color>
-    <color name="primary_800">#558b2f</color>
-    <color name="primary_900">#33691e</color>
-    <color name="primary_A100">#ccff90</color>
-    <color name="primary_A200">#b2ff59</color>
-    <color name="primary_A400">#76ff03</color>
-    <color name="primary_A700">#64dd17</color>
+    <color name="light_green_50">#f1f8e9</color>
+    <color name="light_green_100">#dcedc8</color>
+    <color name="light_green_200">#c5e1a5</color>
+    <color name="light_green_300">#aed581</color>
+    <color name="light_green_400">#9ccc65</color>
+    <color name="light_green_500">#8bc34a</color>
+    <color name="light_green_600">#7cb342</color>
+    <color name="light_green_700">#689f38</color>
+    <color name="light_green_800">#558b2f</color>
+    <color name="light_green_900">#33691e</color>
+    <color name="light_green_A100">#ccff90</color>
+    <color name="light_green_A200">#b2ff59</color>
+    <color name="light_green_A400">#76ff03</color>
+    <color name="light_green_A700">#64dd17</color>
 
     <!-- lime-->
-    <color name="accent_50">#f9fbe7</color>
-    <color name="accent_100">#f0f4c3</color>
-    <color name="accent_200">#e6ee9c</color>
-    <color name="accent_300">#dce775</color>
-    <color name="accent_400">#d4e157</color>
-    <color name="accent_500">#cddc39</color>
-    <color name="accent_600">#c0ca33</color>
-    <color name="accent_700">#afb42b</color>
-    <color name="accent_800">#9e9d24</color>
-    <color name="accent_900">#827717</color>
-    <color name="accent_A100">#f4ff81</color>
-    <color name="accent_A200">#eeff41</color>
-    <color name="accent_A400">#c6ff00</color>
-    <color name="accent_A700">#aeea00</color>
+    <color name="lime_50">#f9fbe7</color>
+    <color name="lime_100">#f0f4c3</color>
+    <color name="lime_200">#e6ee9c</color>
+    <color name="lime_300">#dce775</color>
+    <color name="lime_400">#d4e157</color>
+    <color name="lime_500">#cddc39</color>
+    <color name="lime_600">#c0ca33</color>
+    <color name="lime_700">#afb42b</color>
+    <color name="lime_800">#9e9d24</color>
+    <color name="lime_900">#827717</color>
+    <color name="lime_A100">#f4ff81</color>
+    <color name="lime_A200">#eeff41</color>
+    <color name="lime_A400">#c6ff00</color>
+    <color name="lime_A700">#aeea00</color>
 
     <!--yellow -->
     <color name="yellow_50">#fffde7</color>

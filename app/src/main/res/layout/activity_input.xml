@@ -33,6 +33,7 @@
                 android:textCursorDrawable="@drawable/text_cursor_accent"
                 android:textSize="32sp"
                 app:baseColor="@android:color/white"
+                app:errorColor="@color/accent_500"
                 app:floatingLabel="highlight"
                 app:primaryColor="@color/primary_200" />
 
@@ -45,6 +46,7 @@
                 android:textSize="32sp"
                 android:textCursorDrawable="@drawable/text_cursor_accent"
                 app:baseColor="@android:color/white"
+                app:errorColor="@color/accent_500"
                 app:floatingLabel="highlight"
                 app:primaryColor="@color/primary_200"
                 android:layout_marginBottom="10dp"/>
@@ -71,7 +73,7 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:id="@+id/modeSelection"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:padding="16dp"
 	        >
 
@@ -139,7 +141,7 @@
 
 	        </RadioGroup>
 
-	        <Button style="@style/Button_Raised"
+	        <Button style="@style/Button_Raised.Primary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btn_next"
