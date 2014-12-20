@@ -39,14 +39,15 @@ public class InputActivity extends ActionBarActivity {
             public void onClick(View v) {
                 Log.e("InputButtonlistener", "HERE");
 
-                if(!numVar.getText().toString().matches("") && !numCon.getText().toString().matches("")){
-                    int numCol = Integer.parseInt(numVar.getText().toString());
-                    int numRow = Integer.parseInt(numCon.getText().toString());
-
-                    radioButton.setVisibility(View.VISIBLE);
+                if(numVar.getText().toString().matches("")) {
+	                numVar.setError("Missing number of variables!");
+	            } else if(numCon.getText().toString().matches("")) {
+	                numCon.setError("Missing number of constraints!");
+                } else {
+	                int numCol = Integer.parseInt(numVar.getText().toString());
+	                int numRow = Integer.parseInt(numCon.getText().toString());
+	                radioButton.setVisibility(View.VISIBLE);
                 }
-                else
-                    cheers("Missing either # of Variable or Constraints");
             }
         });
 
@@ -142,7 +143,7 @@ public class InputActivity extends ActionBarActivity {
         eqButton = (FloatingActionButton) findViewById(R.id.fab);
         numVar = (MaterialEditText) findViewById(R.id.et_num_variables);
         numCon = (MaterialEditText) findViewById(R.id.et_num_constraints);
-        radioButton = (LinearLayout) findViewById(R.id.radioButtons);
+        radioButton = (LinearLayout) findViewById(R.id.modeSelection);
         inputButton = (Button) findViewById(R.id.goToInputsButton);
         matoreq = (RadioGroup) findViewById(R.id.matoreqGroup);
         minormaxG = (RadioGroup) findViewById(R.id.minmaxGroup);

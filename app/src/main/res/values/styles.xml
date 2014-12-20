@@ -7,16 +7,6 @@
         <item name="colorPrimary">@color/primary_500</item>
         <item name="colorPrimaryDark">@color/primary_700</item>
 	    <item name="colorAccent">@color/accent_500</item>
-	    <item name="colorButtonNormal">@color/accent_500</item>
-    </style>
-
-    <style name="octaneTable">
-        <item name="android:background">@color/accent_100</item>
-        <item name="android:layout_margin">3dp</item>
-        <item name="android:height">48dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/accent_700</item>
-        <item name="android:textSize">@dimen/abc_text_size_display_1_material</item>
     </style>
 
 	<style name="constraintEditText">
@@ -30,6 +20,18 @@
 		<item name="baseColor">@color/accent_900</item>
 		<item name="floatingLabel">highlight</item>
 		<item name="primaryColor">@color/accent_500</item>
+	</style>
+
+	<style name="Button_Raised" parent="android:Widget.Button">
+		<item name="android:textColor">@color/white</item>
+	</style>
+
+	<style name="Button_Raised.Primary">
+		<item name="android:background">@drawable/primary_round</item>
+	</style>
+
+	<style name="Button_Raised.Accent">
+		<item name="android:background">@drawable/accent_round</item>
 	</style>
 
 </resources>

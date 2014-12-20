@@ -2,15 +2,15 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="AppTheme.Base">
-	    <item name="android:colorButtonNormal">@color/accent_500</item>
+
     </style>
 
-    <style name="Button_Flat.Primary" parent="android:Widget.Material.Button.Borderless">
-        <item name="android:textColor">@color/primary_500</item>
-    </style>
+	<style name="Button_Flat.Primary" parent="android:Widget.Material.Button.Borderless">
+		<item name="android:textColor">@color/primary_500</item>
+	</style>
 
-    <style name="Button_Flat.Accent" parent="android:Widget.Material.Button.Borderless">
-        <item name="android:textColor">@color/accent_500</item>
-    </style>
+	<style name="Button_Flat.Accent" parent="android:Widget.Material.Button.Borderless">
+		<item name="android:textColor">@color/accent_500</item>
+	</style>
 
 </resources>

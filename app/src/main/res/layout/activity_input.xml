@@ -19,10 +19,10 @@
             android:background="?colorPrimary"
             android:orientation="vertical"
             android:paddingBottom="28dp"
-            android:paddingLeft="72dp"
-            android:paddingRight="16dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="72dp"
             android:paddingTop="16dp"
-            android:id="@+id/helloo">
+            android:id="@+id/toolbar">
 
             <com.rengwuxian.materialedittext.MaterialEditText
                 android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:hint="@string/variablesHint"
                 android:inputType="number"
                 android:textCursorDrawable="@drawable/text_cursor_accent"
-                android:textSize="16sp"
+                android:textSize="32sp"
                 app:baseColor="@android:color/white"
                 app:floatingLabel="highlight"
                 app:primaryColor="@color/primary_200" />
@@ -42,7 +42,7 @@
                 android:id="@+id/et_num_constraints"
                 android:hint="@string/constraintHint"
                 android:inputType="number"
-                android:textSize="16sp"
+                android:textSize="32sp"
                 android:textCursorDrawable="@drawable/text_cursor_accent"
                 app:baseColor="@android:color/white"
                 app:floatingLabel="highlight"
@@ -61,84 +61,91 @@
             fab:fab_colorNormal="@color/accent_500"
             fab:fab_colorPressed="@color/accent_700"
             android:layout_marginTop="-28dp"
-            android:layout_marginLeft="16dp"
-            android:orientation="vertical" />
+            android:layout_marginLeft="0dp"
+            android:orientation="vertical"
+            android:layout_marginRight="16dp"
+            android:layout_gravity="right"/>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
-            android:id="@+id/radioButtons"
-            android:gravity="center"
-            android:visibility="invisible">
+            android:id="@+id/modeSelection"
+            android:visibility="visible"
+            android:padding="16dp"
+	        >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Min/Max"
-                android:id="@+id/textView"
-                android:layout_marginTop="20dp" />
+	        <TextView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:textAppearance="?android:attr/textAppearanceLarge"
+	            android:text="@string/inputMode"
+	            android:id="@+id/textView2"
+		        />
 
-            <RadioGroup
+	        <RadioGroup
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:gravity="center"
-                android:id="@+id/minmaxGroup">
+                android:id="@+id/matoreqGroup"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp">
 
                 <RadioButton
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Maximum"
-                    android:id="@+id/maxRadioButton"
-                    android:checked="true" />
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Minimum"
-                    android:id="@+id/minRadioButton"
-                    android:checked="false" />
-
-            </RadioGroup>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Input Mode"
-                android:id="@+id/textView2"
-                android:layout_marginTop="40dp" />
-
-            <RadioGroup
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:gravity="center"
-                android:id="@+id/matoreqGroup">
-
-                <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Matrix Input"
+                    android:text="@string/tableauInput"
                     android:id="@+id/mInputRadioButton"
                     android:checked="true" />
 
                 <RadioButton
-                    android:layout_width="wrap_content"
+                    android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:text="Equation Input"
+                    android:text="@string/standardFormInput"
                     android:id="@+id/eqInputRadioButton"
                     android:checked="false" />
 
 
             </RadioGroup>
 
-            <Button
+	        <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Go To Input!"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/minMaxSelectionTitle"
+                android:id="@+id/textView"
+	            />
+
+	        <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/minmaxGroup"
+                android:orientation="horizontal">
+
+		        <RadioButton
+		            android:layout_width="150dp"
+		            android:layout_height="wrap_content"
+		            android:text="@string/maximum"
+		            android:id="@+id/maxRadioButton"
+		            android:checked="true"
+			        />
+
+		        <RadioButton
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minimum"
+                    android:id="@+id/minRadioButton"
+                    android:checked="false"
+                    android:layout_gravity="right"/>
+
+	        </RadioGroup>
+
+	        <Button style="@style/Button_Raised"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_next"
                 android:id="@+id/goToInputsButton"
-                android:layout_marginTop="40dp"/>
+                android:layout_marginTop="40dp"
+                android:layout_gravity="right"/>
 
         </LinearLayout>
 

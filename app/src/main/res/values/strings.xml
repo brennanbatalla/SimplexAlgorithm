@@ -13,5 +13,12 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_input">InputActivity</string>
+	<string name="minMaxSelectionTitle">Find the:</string>
+	<string name="inputMode">Input Mode</string>
+	<string name="minimum">Minimum</string>
+	<string name="maximum">Maximum</string>
+	<string name="tableauInput">Tableau Matrix</string>
+	<string name="standardFormInput">Standard Form</string>
+	<string name="btn_next">Next</string>
 
 </resources>
