@@ -60,12 +60,12 @@ public class EquationInput extends ActionBarActivity {
 				checkInputs();
 				if(VALID_INPUTS) {
 					solveProblem();
-/*					Intent i = new Intent(getApplicationContext(),ResultActivity.class);
+					Intent i = new Intent(getApplicationContext(),ResultsActivity.class);
 					Bundle mBundle = new Bundle();
 					mBundle.putParcelable("Solution", (Parcelable)s);
 					i.putExtras(mBundle);
 					startActivity(i);
-*/
+
 
 				}
 			}

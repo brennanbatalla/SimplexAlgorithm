@@ -10,7 +10,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 
-public class results extends ActionBarActivity {
+public class ResultsActivity extends ActionBarActivity {
 
     ArrayList<Double> xValues = new ArrayList<>();
 
