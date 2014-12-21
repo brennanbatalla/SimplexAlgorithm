@@ -3,7 +3,6 @@ package bgb.com.simplexalgorithm;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -34,7 +33,6 @@ public class EquationInput extends ActionBarActivity {
 	double[]   b;
 	int numVariables;
 	int numConstraints;
-	boolean VALID_INPUTS;
 	Simplex s;
 
 	@Override
@@ -45,38 +43,32 @@ public class EquationInput extends ActionBarActivity {
         // Set up inputs and buttons
         Initialize();
 
-        numVariables =  Integer.parseInt(getIntent().getStringExtra("numVar"));  // Get number of variables from input activity
-        numConstraints =  Integer.parseInt(getIntent().getStringExtra("numCon")); // Get number of constraints from input activity
-        solveMode = getIntent().getExtras().get("solveMode").toString();  // will be used to find min or max.
-
         generateInputs();
 
 		btn_solve.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				checkInputs();
-				if(VALID_INPUTS) {
+				if(validateInputs()) {
 					solveProblem();
+					Solution.s = s;
 					Intent i = new Intent(getApplicationContext(),ResultsActivity.class);
-					Bundle mBundle = new Bundle();
-					mBundle.putParcelable("Solution", (Parcelable)s);
 					i.putExtra("solveMode", getIntent().getStringExtra("solveMode"));
-					i.putExtras(mBundle);
 					startActivity(i);
-
 				}
 			}
 		});
     }
 
 	private void Initialize() {
-
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
 		btn_solve = (Button) findViewById(R.id.solveButton);
 		constraintsStringList = new ArrayList<>();
 		mLinearLayout = (LinearLayout) findViewById(R.id.functionLayout);
 		lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+		numVariables =  Integer.parseInt(getIntent().getStringExtra("numVar"));  // Get number of variables from input activity
+		numConstraints =  Integer.parseInt(getIntent().getStringExtra("numCon")); // Get number of constraints from input activity
+		solveMode = getIntent().getExtras().get("solveMode").toString();  // will be used to find min or max.
 	}
 
 	private void generateInputs() {
@@ -87,26 +79,27 @@ public class EquationInput extends ActionBarActivity {
 
 	}
 
-	private void checkInputs() {
+	private boolean validateInputs() {
 		if(et_objFunction.getText().toString().matches("")) {
-			VALID_INPUTS = false;
 			Cheers("Objective function cannot be empty!");
+			return false;
 		} else {
-			for(int i = 0; i < numConstraints; i++) {
-				if(constraintsStringList.get(i).getText().toString().matches("")) {
+			for (int i = 0; i < numConstraints; i++) {
+				if (constraintsStringList.get(i).getText().toString().matches("")) {
 					Cheers("Constraint inputs cannot be empty!");
-					VALID_INPUTS = false;
-					break;
+					return false;
 				} else {
-					for(int j = 0; j < numVariables; j++) {
-						if(!constraintsStringList.get(i).getText().toString().contains("x"+j)) {
-							VALID_INPUTS = false;
+					for (int j = 0; j < numVariables; j++) {
+						if (!constraintsStringList.get(i).getText().toString().contains("x" + j)) {
+							constraintsStringList.get(i).setError("Missing variable x" + j + "!");
 							Cheers("Constraint " + i + " is missing x" + j + "!");
+							return false;
 						}
 					}
 				}
 			}
 		}
+		return true;
 	}
 
 	private void solveProblem() {
@@ -244,8 +237,7 @@ public class EquationInput extends ActionBarActivity {
             double[] c = {  13.0,  23.0 };
             double[] b = { 480.0, 160.0, 1190.0 };
             double[][] A = {
-                    constraints[i] = constraints[i].replace("+-","-");
-			constraints[i] = constraints[i].replace("-", "+-");{  5.0, 15.0 },
+                    {  5.0, 15.0 },
                     {  4.0,  4.0 },
                     { 35.0, 20.0 },
             };
