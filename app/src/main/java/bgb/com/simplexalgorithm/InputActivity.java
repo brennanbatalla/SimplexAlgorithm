@@ -64,11 +64,11 @@ public class InputActivity extends ActionBarActivity {
 	                Log.e(TAG,"inputMode/No selection");
 		            Cheers("Please choose an input mode.");
 	            } else if (inputMode == R.id.rb_tableauMatrix) {
-		            Log.i(TAG,"inputMode/Maximum");
+		            Log.i(TAG,"inputMode/Matrix");
 		            i = new Intent(getApplicationContext(), MatrixInput.class);
 	            } else if (inputMode == R.id.rb_equationInput) {
-		            Log.i(TAG,"inputMode/Minimum");
-		            i = new Intent(getApplicationContext(), MatrixInput.class);
+		            Log.i(TAG,"inputMode/Equation");
+		            i = new Intent(getApplicationContext(), EquationInput.class);
 	            } else {
 					Cheers("An unknown error has occurred");
 	            }
@@ -80,10 +80,10 @@ public class InputActivity extends ActionBarActivity {
 		            Log.e(TAG,"solveMode/No selection");
 		            Cheers("Please choose a solve mode.");
 	            } else if (solveMode == R.id.rb_max) {
-		            Log.i(TAG,"inputMode/Maximum");
+		            Log.i(TAG,"solveMode/Maximum");
 		            i.putExtra("solveMode","max");
 	            } else if (solveMode == R.id.rb_min) {
-		            Log.i(TAG,"inputMode/Minimum");
+		            Log.i(TAG,"solveMode/Minimum");
 		            i.putExtra("solveMode","min");
 	            } else {
 		            Cheers("An unknown error has occurred");

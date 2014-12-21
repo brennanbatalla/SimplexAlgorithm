@@ -10,7 +10,8 @@
     <string name="constraintEntryHint">Constraint</string>
     <string name="solve">Solve</string>
     <string name="title_activity_matrixInput">Tableau Matrix</string>
-	<string name="title_activity_equationInput">Equations</string>
+	<string name="title_activity_equationInput">Equation Input</string>
+	<string name="title_activity_results">Results</string>
 	<string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 	<string name="minMaxSelectionTitle">Solve Mode</string>
