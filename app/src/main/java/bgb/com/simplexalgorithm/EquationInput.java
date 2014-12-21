@@ -40,7 +40,7 @@ public class EquationInput extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_equationInput);
+        setContentView(R.layout.activity_equation_input);
 
         // Set up inputs and buttons
         Initialize();
@@ -60,7 +60,7 @@ public class EquationInput extends ActionBarActivity {
 					Intent i = new Intent(getApplicationContext(),ResultsActivity.class);
 					Bundle mBundle = new Bundle();
 					mBundle.putParcelable("Solution", (Parcelable)s);
-					i.putExtra("solveMode",getIntent().getStringExtra("solveMode"));
+					i.putExtra("solveMode", getIntent().getStringExtra("solveMode"));
 					i.putExtras(mBundle);
 					startActivity(i);
 
