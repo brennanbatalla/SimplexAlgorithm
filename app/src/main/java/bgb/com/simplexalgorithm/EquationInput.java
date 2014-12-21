@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class EquationInput extends ActionBarActivity {
 
 	MaterialEditText et_constraints, et_objFunction;
@@ -61,9 +60,9 @@ public class EquationInput extends ActionBarActivity {
 					Intent i = new Intent(getApplicationContext(),ResultsActivity.class);
 					Bundle mBundle = new Bundle();
 					mBundle.putParcelable("Solution", (Parcelable)s);
+					i.putExtra("solveMode",getIntent().getStringExtra("solveMode"));
 					i.putExtras(mBundle);
 					startActivity(i);
-
 
 				}
 			}
@@ -184,24 +183,6 @@ public class EquationInput extends ActionBarActivity {
 
 		s = new Simplex(A,b,c);
 
-		double[] x = s.primal();
-
-		String solution = "Solution is ";
-		double optimalValue = 0;
-		for (int i = 0; i < x.length; i++) {
-			optimalValue +=  c[i]*x[i];
-			Log.e("Primal: ", "x[" + i + "] = " + x[i]);
-			solution += "x" + i + " = " + x[i] +", ";
-		}
-
-		solution = solution.substring(0,solution.length()-1);
-
-		double[] y = s.dual();
-		for (int j = 0; j < y.length; j++)
-			Log.e("Dual: ","y[" + j + "] = " + y[j]);
-
-		Cheers(solution);
-		Cheers("Optimal: " + optimalValue);
 	}
 
 	public void displayFunctionInputs(int c){

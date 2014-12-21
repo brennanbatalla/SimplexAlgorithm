@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -12,46 +13,32 @@ import java.util.ArrayList;
 
 public class ResultsActivity extends ActionBarActivity {
 
-    ArrayList<Double> xValues = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+		Simplex	s = (Simplex)getIntent().getParcelableExtra("Solution");
+	    double[] x = s.primal();
+		double[] c = s.c;
+	    String solution = "Solution is ";
+	    double optimalValue = 0;
+	    for (int i = 0; i < x.length; i++) {
+		    optimalValue +=  c[i]*x[i];
+		    Log.e("Primal: ", "x[" + i + "] = " + x[i]);
+		    solution += "x" + i + " = " + x[i] +", ";
+	    }
 
-        int xLength = (Integer) getIntent().getExtras().get("xLength");
-       for(int i = 0; i <= xLength; i++){
+	    solution = solution.substring(0,solution.length()-1);
 
-           Double xValue = (Double) getIntent().getExtras().get("x"+i);
-           xValues.add(xValue);
-           Log.e("xValues", xValue.toString());
+	    double[] y = s.dual();
+	    for (int j = 0; j < y.length; j++)
+		    Log.e("Dual: ","y[" + j + "] = " + y[j]);
 
-       }
-        Double optimum = (Double) getIntent().getExtras().get("optimal");
-
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_results, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
+	   // Cheers(solution);
+	   // Cheers("Optimal: " + optimalValue);
+		TextView tv_solution = (TextView) findViewById(R.id.solution);
+	    tv_solution.setText("solution" + " " + optimalValue);
     }
 }

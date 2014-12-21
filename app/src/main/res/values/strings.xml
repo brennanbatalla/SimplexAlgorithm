@@ -20,5 +20,7 @@
 	<string name="tableauInput">Tableau Matrix</string>
 	<string name="standardFormInput">Standard Form</string>
 	<string name="btn_next">Next</string>
+	<string name="resultMinMaxText">Minimize</string>
+	<string name="solutionPlaceholder">Solution</string>
 
 </resources>

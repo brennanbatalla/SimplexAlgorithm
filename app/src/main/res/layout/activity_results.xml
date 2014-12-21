@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarStyle="outsideOverlay"
-    tools:context=".SimplexMain"
+    tools:context=".ResultsActivity"
     android:visibility="visible">
 
     <LinearLayout
@@ -13,25 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?colorPrimary"
-            android:orientation="vertical"
-            android:paddingBottom="28dp"
-            android:paddingLeft="72dp"
-            android:paddingRight="16dp"
-            android:paddingTop="16dp"
-            android:id="@+id/helloo">
 
-
-        </LinearLayout>
-
-
-
-
-
-
+	    <TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textAppearance="?android:attr/textAppearanceMedium"
+		    android:text="@string/solutionPlaceholder"
+		    android:id="@+id/solution"
+		    android:layout_gravity="center_horizontal"/>
     </LinearLayout>
 
 

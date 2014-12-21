@@ -9,7 +9,7 @@ import android.util.Log;
         private double[][] a;   // tableaux
         private int M;          // number of constraints
         private int N;          // number of original variables
-
+		public double[] c;
         private int[] basis;    // basis[i] = basic variable corresponding to row i
         // only needed to print out solution, not book
 
@@ -17,6 +17,7 @@ import android.util.Log;
         public Simplex(double[][] A, double[] b, double[] c){
             M = b.length;
             N = c.length;
+	        this.c = c;
             a = new double[M + 1][N + M + 1];
             for (int i = 0; i < M; i++)
                 for (int j = 0; j < N; j++)
