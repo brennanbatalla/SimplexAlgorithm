@@ -3,6 +3,7 @@ package bgb.com.simplexalgorithm;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.ContextThemeWrapper;
@@ -37,6 +38,7 @@ public class EquationInput extends ActionBarActivity {
 	int numVariables;
 	int numConstraints;
 	boolean VALID_INPUTS;
+	Simplex s;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,12 @@ public class EquationInput extends ActionBarActivity {
 				checkInputs();
 				if(VALID_INPUTS) {
 					solveProblem();
-					Intent i = new Intent();
+/*					Intent i = new Intent(getApplicationContext(),ResultActivity.class);
+					Bundle mBundle = new Bundle();
+					mBundle.putParcelable("Solution", (Parcelable)s);
+					i.putExtras(mBundle);
+					startActivity(i);
+*/
 
 				}
 			}
@@ -177,7 +184,7 @@ public class EquationInput extends ActionBarActivity {
 			Log.i("SimplexMain", "A[" + i + "]:" + Arrays.toString(A[i]));
 		}
 
-		Simplex s = new Simplex(A,b,c);
+		s = new Simplex(A,b,c);
 
 		double[] x = s.primal();
 
