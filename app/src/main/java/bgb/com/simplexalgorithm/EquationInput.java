@@ -1,7 +1,7 @@
 package bgb.com.simplexalgorithm;
 
 
-import android.app.ActionBar;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -15,7 +15,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.melnykov.fab.FloatingActionButton;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 import java.util.ArrayList;
@@ -26,15 +25,12 @@ import java.util.List;
 public class EquationInput extends ActionBarActivity {
 
 	MaterialEditText et_constraints, et_objFunction;
-	FloatingActionButton btn_genConstraints;
 	List<EditText> constraintsStringList;
 	LinearLayout mLinearLayout;
 	LinearLayout.LayoutParams lp;
 	Button btn_solve;
 
-    int numVar;
-    int numCon;
-    String minmaxTF;
+    String solveMode;
 	double[]   c;
 	double[][] A;
 	double[]   b;
@@ -45,28 +41,35 @@ public class EquationInput extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_simplexmain);
+        setContentView(R.layout.activity_equationInput);
 
         // Set up inputs and buttons
         Initialize();
 
-        numVar =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
-        numCon =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
-        minmaxTF = getIntent().getExtras().get("minOrmax").toString();  // will be used to find min or max.
+        numVariables =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
+        numConstraints =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
+        solveMode = getIntent().getExtras().get("solveMode").toString();  // will be used to find min or max.
 
         generateInputs();
+
+		btn_solve.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				checkInputs();
+				if(VALID_INPUTS) {
+					solveProblem();
+					Intent i = new Intent();
+
+				}
+			}
+		});
     }
 
 	private void Initialize() {
+
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-       // getSupportActionBar().setHomeButtonEnabled(true);
-        //setContentView(R.layout.home);
-
         et_objFunction = (MaterialEditText) findViewById(R.id.et_objectiveFunction);
-
-
 		btn_solve = (Button) findViewById(R.id.solveButton);
-
 		constraintsStringList = new ArrayList<>();
 		mLinearLayout = (LinearLayout) findViewById(R.id.functionLayout);
 		lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
@@ -75,8 +78,6 @@ public class EquationInput extends ActionBarActivity {
 	private void generateInputs() {
 		Log.i("SimplexMain", "onClick/generateInputs");
 
-			numConstraints = numCon;
-			numVariables = numVar;
 			btn_solve.setVisibility(View.VISIBLE);
 			displayFunctionInputs(numConstraints);
 
@@ -92,6 +93,13 @@ public class EquationInput extends ActionBarActivity {
 					Cheers("Constraint inputs cannot be empty!");
 					VALID_INPUTS = false;
 					break;
+				} else {
+					for(int j = 0; j < numVariables; j++) {
+						if(!constraintsStringList.get(i).getText().toString().contains("x"+j)) {
+							VALID_INPUTS = false;
+							Cheers("Constraint " + i + " is missing x" + j + "!");
+						}
+					}
 				}
 			}
 		}
@@ -204,26 +212,13 @@ public class EquationInput extends ActionBarActivity {
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 
-
-		//noinspection SimplifiableIfStatement
-        ActionBar bar = getActionBar();
-        //int id = item.getItemId();
-        switch (item.getItemId()) {
-            case R.id.action_bar:
-                return true;
-            case android.R.id.home:
-                Log.e("Home Button", "Clicking Home");
-                finish();
-                return true;
-            default:
 		return super.onOptionsItemSelected(item);
-	    }
     }
 
 
 	public void displayFunctionInputs(int c){
 
-		if (mLinearLayout.getChildCount() > 0) {
+		if (mLinearLayout.getChildCount() > 1) {
 			mLinearLayout.removeViews(1,mLinearLayout.getChildCount()-1);
 		}
 

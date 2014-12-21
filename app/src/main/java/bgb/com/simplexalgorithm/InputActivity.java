@@ -73,7 +73,6 @@ public class InputActivity extends ActionBarActivity {
 					Cheers("An unknown error has occurred");
 	            }
 
-
 	            // Get solve mode radio selection
 				int solveMode = rg_minMax.getCheckedRadioButtonId();
 
@@ -91,12 +90,10 @@ public class InputActivity extends ActionBarActivity {
 	            }
 
 	            startActivity(i);
-
             }
         });
 
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -110,12 +107,11 @@ public class InputActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        /*int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -128,26 +124,10 @@ public class InputActivity extends ActionBarActivity {
         inputButton = (Button) findViewById(R.id.goToInputsButton);
         rg_inputMode = (RadioGroup) findViewById(R.id.matoreqGroup);
         rg_minMax = (RadioGroup) findViewById(R.id.minmaxGroup);
-
     }
-
 
     public void Cheers(String message){
-
         Toast.makeText(getApplicationContext(), message,
                 Toast.LENGTH_LONG).show();
-
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }
