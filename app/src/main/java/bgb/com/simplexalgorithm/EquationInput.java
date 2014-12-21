@@ -45,8 +45,8 @@ public class EquationInput extends ActionBarActivity {
         // Set up inputs and buttons
         Initialize();
 
-        numVariables =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
-        numConstraints =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
+        numVariables =  Integer.parseInt(getIntent().getStringExtra("numVar"));  // Get number of variables from input activity
+        numConstraints =  Integer.parseInt(getIntent().getStringExtra("numCon")); // Get number of constraints from input activity
         solveMode = getIntent().getExtras().get("solveMode").toString();  // will be used to find min or max.
 
         generateInputs();

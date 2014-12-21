@@ -89,6 +89,8 @@ public class InputActivity extends ActionBarActivity {
 		            Cheers("An unknown error has occurred");
 	            }
 
+	            i.putExtra("numVar",numVar.getText().toString());
+	            i.putExtra("numCon",numCon.getText().toString());
 	            startActivity(i);
             }
         });
