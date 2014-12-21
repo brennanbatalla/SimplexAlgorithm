@@ -14,7 +14,7 @@
         </activity>
         <activity
             android:name=".MatrixInput"
-            android:label="@string/title_activity_matrix" >
+            android:label="@string/title_activity_matrixInput" >
         </activity>
         <activity
             android:name=".InputActivity"

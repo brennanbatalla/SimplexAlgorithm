@@ -96,14 +96,14 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="@string/tableauInput"
-                    android:id="@+id/mInputRadioButton"
+                    android:id="@+id/rb_tableauMatrix"
                     android:checked="true" />
 
                 <RadioButton
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="@string/standardFormInput"
-                    android:id="@+id/eqInputRadioButton"
+                    android:id="@+id/rb_equationInput"
                     android:checked="false" />
 
 
@@ -127,7 +127,7 @@
 		            android:layout_width="150dp"
 		            android:layout_height="wrap_content"
 		            android:text="@string/maximum"
-		            android:id="@+id/maxRadioButton"
+		            android:id="@+id/rb_max"
 		            android:checked="true"
 			        />
 
@@ -135,7 +135,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:text="@string/minimum"
-                    android:id="@+id/minRadioButton"
+                    android:id="@+id/rb_min"
                     android:checked="false"
                     android:layout_gravity="right"/>
 
