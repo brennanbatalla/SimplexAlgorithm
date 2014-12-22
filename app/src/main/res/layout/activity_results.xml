@@ -50,7 +50,7 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:textAppearance="?android:attr/textAppearanceMedium"
-			    android:id="@+id/textView3"
+			    android:id="@+id/constraints"
 			    android:layout_gravity="center_horizontal"
 			    android:text="Test"
 			    android:textColor="@color/accent_500"
@@ -93,6 +93,17 @@
 		    android:id="@+id/optimalValue"
 		    android:layout_gravity="center_horizontal"
 		    android:layout_marginTop="20dp"/>
+
+	    <TextView
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:textAppearance="?android:attr/textAppearanceMedium"
+		    android:id="@+id/numericOptimalValue"
+		    android:layout_gravity="center_horizontal"
+		    android:text="Z"
+		    android:textColor="@color/accent_500"
+		    android:textStyle="bold"
+		    android:textSize="24sp"/>
 
     </LinearLayout>
 

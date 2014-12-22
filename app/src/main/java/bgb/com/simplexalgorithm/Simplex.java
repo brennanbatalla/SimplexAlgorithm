@@ -10,6 +10,8 @@ import android.util.Log;
         private int M;          // number of constraints
         private int N;          // number of original variables
 		public double[] c;
+	    public double[] b;
+	    public double[][] A;
         private int[] basis;    // basis[i] = basic variable corresponding to row i
         // only needed to print out solution, not book
 
@@ -18,6 +20,8 @@ import android.util.Log;
             M = b.length;
             N = c.length;
 	        this.c = c;
+	        this.b = b;
+	        this.A = A;
             a = new double[M + 1][N + M + 1];
             for (int i = 0; i < M; i++)
                 for (int j = 0; j < N; j++)

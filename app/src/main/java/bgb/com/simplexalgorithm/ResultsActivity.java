@@ -14,19 +14,35 @@ public class ResultsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_results);
 
 		Simplex	s = Solution.s;
+
 	    String objFunc = "";
+	    String constraints = "";
+	    String solution = "";
+	    double optimalValue = 0;
+
 	    double[] x = s.primal();
 		double[] c = s.c;
-	    String solution = "Solution is ";
-	    double optimalValue = 0;
+	    double[][] A = s.A;
+	    double[] b = s.b;
 	    for (int i = 0; i < x.length; i++) {
 		    optimalValue +=  c[i]*x[i];
-		    objFunc += c[i]+ "x"+i;
+		    objFunc += c[i]+ "x" + i + "+";
 		    Log.e("Primal: ", "x[" + i + "] = " + x[i]);
-		    solution += "x" + i + " = " + x[i] +", ";
+		    solution += "x" + i + " = " + x[i] +"\n";
 	    }
 
-	    solution = solution.substring(0,solution.length()-1);
+	    objFunc = objFunc.substring(0, objFunc.length()-1);
+
+	    int numVar = x.length;
+	    int numCon = b.length;
+
+	    for(int i = 0; i < numCon; i++) {
+		    for (int j = 0; j < numVar; j++) {
+				constraints += A[i][j] + "x" + i + "+";
+		    }
+		    constraints = constraints.substring(0,constraints.length()-1);
+		    constraints += " <= " +  b[i] + "\n";
+	    }
 
 	    double[] y = s.dual();
 	    for (int j = 0; j < y.length; j++)
@@ -39,9 +55,16 @@ public class ResultsActivity extends ActionBarActivity {
 	    TextView tv_objFunc = (TextView) findViewById(R.id.resultObjFunc);
 	    tv_objFunc.setText(objFunc);
 
+		// Set contraints
+	    TextView tv_constraints = (TextView) findViewById(R.id.constraints);
+		tv_constraints.setText(constraints);
+
 	    // Set solution
 		TextView tv_solution = (TextView) findViewById(R.id.solutionValues);
-	    tv_solution.setText(solution + " " + optimalValue);
+	    tv_solution.setText(solution);
 
+	    // Set optimal value
+	    TextView tv_numericOptVal = (TextView) findViewById(R.id.numericOptimalValue);
+	    tv_numericOptVal.setText(String.valueOf(optimalValue));
     }
 }
