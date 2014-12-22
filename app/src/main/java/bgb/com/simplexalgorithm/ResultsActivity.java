@@ -14,12 +14,14 @@ public class ResultsActivity extends ActionBarActivity {
         setContentView(R.layout.activity_results);
 
 		Simplex	s = Solution.s;
+	    String objFunc = "";
 	    double[] x = s.primal();
 		double[] c = s.c;
 	    String solution = "Solution is ";
 	    double optimalValue = 0;
 	    for (int i = 0; i < x.length; i++) {
 		    optimalValue +=  c[i]*x[i];
+		    objFunc += c[i]+ "x"+i;
 		    Log.e("Primal: ", "x[" + i + "] = " + x[i]);
 		    solution += "x" + i + " = " + x[i] +", ";
 	    }

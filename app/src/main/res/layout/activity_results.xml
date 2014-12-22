@@ -1,7 +1,5 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarStyle="outsideOverlay"
@@ -14,13 +12,88 @@
         android:layout_height="wrap_content">
 
 
+	    <LinearLayout
+		    android:orientation="vertical"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:id="@+id/linLayoutEquations">
+
+		    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:text="@string/resultMinMax"
+			    android:id="@+id/solutionMode"
+			    android:layout_gravity="center_horizontal"
+			    android:layout_marginTop="20dp"/>
+
+		    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:id="@+id/resultObjFunc"
+			    android:layout_gravity="center_horizontal"
+			    android:text="Test"
+			    android:textColor="@color/primary_500"
+			    android:textStyle="bold"
+			    android:textSize="24sp"/>
+
+		    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:text="@string/subjectTo"
+			    android:id="@+id/subjectTo"
+			    android:layout_gravity="center_horizontal"/>
+
+		    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:id="@+id/textView3"
+			    android:layout_gravity="center_horizontal"
+			    android:text="Test"
+			    android:textColor="@color/accent_500"
+			    android:textStyle="bold"
+			    android:textSize="24sp"/>
+	    </LinearLayout>
+
+	    <LinearLayout
+		    android:orientation="vertical"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:id="@+id/linLayoutSolution">
+
+		    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:text="@string/Solution"
+			    android:id="@+id/solution"
+			    android:layout_gravity="center_horizontal"
+			    android:layout_marginTop="20dp"/>
+
+		    <TextView
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:textAppearance="?android:attr/textAppearanceMedium"
+			    android:id="@+id/solutionValues"
+			    android:layout_gravity="center_horizontal"
+			    android:text="Test"
+			    android:textColor="@color/primary_500"
+			    android:textStyle="bold"
+			    android:textSize="24sp"/>
+	    </LinearLayout>
+
 	    <TextView
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:textAppearance="?android:attr/textAppearanceMedium"
-		    android:text="@string/solutionPlaceholder"
-		    android:id="@+id/solution"
-		    android:layout_gravity="center_horizontal"/>
+		    android:text="@string/optimalValue"
+		    android:id="@+id/optimalValue"
+		    android:layout_gravity="center_horizontal"
+		    android:layout_marginTop="20dp"/>
+
     </LinearLayout>
 
 
