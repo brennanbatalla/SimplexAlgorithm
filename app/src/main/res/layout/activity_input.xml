@@ -51,29 +51,17 @@
                 app:primaryColor="@color/primary_200"
                 android:layout_marginBottom="10dp"/>
 
-        </LinearLayout>
 
 
-        <com.melnykov.fab.FloatingActionButton
-            android:id="@+id/fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_add_white_24dp"
-            fab:fab_type="normal"
-            fab:fab_colorNormal="@color/accent_500"
-            fab:fab_colorPressed="@color/accent_700"
-            android:layout_marginTop="-28dp"
-            android:layout_marginLeft="0dp"
-            android:orientation="vertical"
-            android:layout_marginRight="16dp"
-            android:layout_gravity="right"/>
+
+
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:id="@+id/modeSelection"
-            android:visibility="invisible"
+            android:visibility="visible"
             android:padding="16dp"
 	        >
 
@@ -139,16 +127,23 @@
                     android:layout_gravity="right"/>
 
 	        </RadioGroup>
-
-	        <Button style="@style/Button_Raised.Primary"
+        </LinearLayout>
+        </LinearLayout>
+            <com.melnykov.fab.FloatingActionButton
+                android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btn_next"
-                android:id="@+id/goToInputsButton"
-                android:layout_marginTop="40dp"
+                android:src="@drawable/ic_add_white_24dp"
+                fab:fab_type="normal"
+                fab:fab_colorNormal="@color/accent_500"
+                fab:fab_colorPressed="@color/accent_700"
+                android:layout_marginTop="-28dp"
+                android:layout_marginLeft="0dp"
+                android:orientation="vertical"
+                android:layout_marginRight="16dp"
                 android:layout_gravity="right"/>
 
-        </LinearLayout>
+
 
     </LinearLayout>
 

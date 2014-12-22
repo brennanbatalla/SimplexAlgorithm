@@ -1,7 +1,7 @@
 package bgb.com.simplexalgorithm;
 
 import android.app.ActionBar;
-import android.os.Build;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,7 +28,7 @@ public class MatrixInput extends ActionBarActivity {
     double[]   b;
     int numVar;
     int numCon;
-	String solveMode;
+    Simplex s;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,28 +37,27 @@ public class MatrixInput extends ActionBarActivity {
 
         initialize();
 
+        final int numVar =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
+        final int numCon =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
+        //minmaxTF = getIntent().getExtras().get("minOrmax").toString();  // will be used to find min or max.
+
         EquationGenerator(numVar, numCon);
 
         solve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean VALID = false;
-                TableLayout tblLayout = (TableLayout)findViewById(R.id.functionLayout);
+                boolean VALID;
 
-//                for (int i = 0; i<= numRow;i++){
-//                    TableRow consCol = (TableRow) tblLayout.getChildAt(i);
-//                    for (int j = 0; j < numCol;j++ ){
-//
-//                        MaterialEditText et = (MaterialEditText) consCol.getChildAt(j);
-//                        Boolean Set = et.validateWith(new RegexpValidator("Only Integer Valid!", "\\d+"));
-//
-//
-//                        A[i-1][j] =  Double.parseDouble(et.getText().toString());
-//                        Log.e("A/constraints", et.getText().toString());
-//                    }
-//                }
+                VALID = validateInputs(numVar, numCon);
 
-                solveProblem();
+                if(VALID) {
+                    solveProblem();
+                    Solution.s = s;
+                    Intent i = new Intent(getApplicationContext(),ResultsActivity.class);
+                    i.putExtra("solveMode", getIntent().getStringExtra("solveMode"));
+                    startActivity(i);
+                }
+
 
             }
         });
@@ -78,7 +77,7 @@ public class MatrixInput extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        ActionBar bar = getActionBar();
+        //ActionBar bar = getActionBar();
         //int id = item.getItemId();
         switch (item.getItemId()) {
             case R.id.action_bar:
@@ -97,17 +96,14 @@ public class MatrixInput extends ActionBarActivity {
 
         eqButton = (FloatingActionButton) findViewById(R.id.fab);
         solve = (Button) findViewById(R.id.solveButton);
-	    numVar =  Integer.parseInt(getIntent().getStringExtra("numVar"));  // Get number of variables from input activity
-	    numCon =  Integer.parseInt(getIntent().getStringExtra("numCon")); // Get number of constraints from input activity
-	    solveMode = getIntent().getExtras().get("solveMode").toString();  // will be used to find min or max.
-    }
+          }
 
 
     public void EquationGenerator(int numcolumns, int numrow){
 
         TableRow.LayoutParams editMarginParams = new TableRow.LayoutParams(TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
         editMarginParams.setMargins(5, 5, 5, 5);
-        if(Build.VERSION.SDK_INT >= 17){
+        if(Integer.valueOf(android.os.Build.VERSION.SDK) >= 17){
             editMarginParams.setMarginStart(5);
             editMarginParams.setMarginEnd(5);
         }
@@ -135,8 +131,46 @@ public class MatrixInput extends ActionBarActivity {
 
         TableRow last = (TableRow) table.getChildAt(0);
         EditText Lastet = (EditText) last.getChildAt(numcolumns);
-        Lastet.setVisibility(View.INVISIBLE);
+        Lastet.setText("2");                                       // Setting random number value
+        Lastet.setVisibility(View.INVISIBLE);                      // for error checking later
 
+    }
+
+
+    public boolean validateInputs(int numCol, int numRow){
+        boolean validate = true;
+        double[][] inputs = new double[numRow][numCol];
+
+        TableLayout tblLayout = (TableLayout)findViewById(R.id.functionLayout);
+
+        // Run through the matrix inputs
+        for (int i = 0; i<= numRow;i++){
+            TableRow inputRow = (TableRow) tblLayout.getChildAt(i);
+            for (int j = 0; j <= numCol;j++ ) {
+                EditText et = (EditText) inputRow.getChildAt(j);
+
+                if (!et.getText().toString().matches("")) {      // Checking for non-input
+                    try {
+                         Double.parseDouble(et.getText().toString());
+                    }catch(NumberFormatException e){            // Checking for non number input
+                        Log.e("row" + i + "" + "col" + j + "not a number", et.getText().toString());
+                        cheers("'" + et.getText().toString() + "'" + " is not a number.");
+                        validate = false;
+                        break;
+                    }
+            }
+            else{
+                Log.e("row" + i + "" + "col" + j +" null", et.getText().toString());
+                validate = false;
+                cheers("Missing an input.");
+                break;
+                }
+
+            }
+        }
+
+
+        return validate;
     }
 
 
@@ -186,7 +220,7 @@ public class MatrixInput extends ActionBarActivity {
         }
                 //Log.e("C",c.toString());
 
-        Simplex s = new Simplex(A,b,c);
+        s = new Simplex(A,b,c);
 
         double[] x = s.primal();
 
@@ -204,8 +238,6 @@ public class MatrixInput extends ActionBarActivity {
         for (int j = 0; j < y.length; j++)
             Log.e("Dual: ","y[" + j + "] = " + y[j]);
 
-        cheers(solution);
-        cheers("Optimal: " + optimalValue);
     }
 
 

@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -22,7 +21,6 @@ public class InputActivity extends ActionBarActivity {
     MaterialEditText numVar;
     MaterialEditText numCon;
     LinearLayout radioButton;
-    Button inputButton;
     RadioGroup rg_inputMode;
     RadioGroup rg_minMax;
 
@@ -46,52 +44,44 @@ public class InputActivity extends ActionBarActivity {
 	            } else if(numCon.getText().toString().matches("")) {
 	                numCon.setError("Missing number of constraints!");
                 } else {
-	                radioButton.setVisibility(View.VISIBLE);
+                    Intent i = new Intent();
+
+                    // Get input mode radio selection
+                    int inputMode = rg_inputMode.getCheckedRadioButtonId();
+
+                    if(inputMode == -1) {
+                        Log.e(TAG,"inputMode/No selection");
+                        Cheers("Please choose an input mode.");
+                    } else if (inputMode == R.id.rb_tableauMatrix) {
+                        Log.i(TAG,"inputMode/Matrix");
+                        i = new Intent(getApplicationContext(), MatrixInput.class);
+                    } else if (inputMode == R.id.rb_equationInput) {
+                        Log.i(TAG,"inputMode/Equation");
+                        i = new Intent(getApplicationContext(), EquationInput.class);
+                    } else {
+                        Cheers("An unknown error has occurred");
+                    }
+
+                    // Get solve mode radio selection
+                    int solveMode = rg_minMax.getCheckedRadioButtonId();
+
+                    if(solveMode == -1)  {
+                        Log.e(TAG,"solveMode/No selection");
+                        Cheers("Please choose a solve mode.");
+                    } else if (solveMode == R.id.rb_max) {
+                        Log.i(TAG,"solveMode/Maximum");
+                        i.putExtra("solveMode","max");
+                    } else if (solveMode == R.id.rb_min) {
+                        Log.i(TAG,"solveMode/Minimum");
+                        i.putExtra("solveMode","min");
+                    } else {
+                        Cheers("An unknown error has occurred");
+                    }
+
+                    i.putExtra("numVar",numVar.getText().toString());
+                    i.putExtra("numCon",numCon.getText().toString());
+                    startActivity(i);
                 }
-            }
-        });
-
-        inputButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-	            Intent i = new Intent();
-
-	            // Get input mode radio selection
-	            int inputMode = rg_inputMode.getCheckedRadioButtonId();
-
-	            if(inputMode == -1) {
-	                Log.e(TAG,"inputMode/No selection");
-		            Cheers("Please choose an input mode.");
-	            } else if (inputMode == R.id.rb_tableauMatrix) {
-		            Log.i(TAG,"inputMode/Matrix");
-		            i = new Intent(getApplicationContext(), MatrixInput.class);
-	            } else if (inputMode == R.id.rb_equationInput) {
-		            Log.i(TAG,"inputMode/Equation");
-		            i = new Intent(getApplicationContext(), EquationInput.class);
-	            } else {
-					Cheers("An unknown error has occurred");
-	            }
-
-	            // Get solve mode radio selection
-				int solveMode = rg_minMax.getCheckedRadioButtonId();
-
-	            if(solveMode == -1)  {
-		            Log.e(TAG,"solveMode/No selection");
-		            Cheers("Please choose a solve mode.");
-	            } else if (solveMode == R.id.rb_max) {
-		            Log.i(TAG,"solveMode/Maximum");
-		            i.putExtra("solveMode","max");
-	            } else if (solveMode == R.id.rb_min) {
-		            Log.i(TAG,"solveMode/Minimum");
-		            i.putExtra("solveMode","min");
-	            } else {
-		            Cheers("An unknown error has occurred");
-	            }
-
-	            i.putExtra("numVar",numVar.getText().toString());
-	            i.putExtra("numCon",numCon.getText().toString());
-	            startActivity(i);
             }
         });
 
@@ -123,7 +113,6 @@ public class InputActivity extends ActionBarActivity {
         numVar = (MaterialEditText) findViewById(R.id.et_num_variables);
         numCon = (MaterialEditText) findViewById(R.id.et_num_constraints);
         radioButton = (LinearLayout) findViewById(R.id.modeSelection);
-        inputButton = (Button) findViewById(R.id.goToInputsButton);
         rg_inputMode = (RadioGroup) findViewById(R.id.matoreqGroup);
         rg_minMax = (RadioGroup) findViewById(R.id.minmaxGroup);
     }
