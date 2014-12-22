@@ -45,7 +45,7 @@
 
 </FrameLayout>
 
-        <Button
+        <Button style="@style/Button_Raised.Primary"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="@string/solve"

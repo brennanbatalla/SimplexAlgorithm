@@ -1,6 +1,7 @@
 package bgb.com.simplexalgorithm;
 
 import android.app.ActionBar;
+import android.os.Build;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,7 +28,7 @@ public class MatrixInput extends ActionBarActivity {
     double[]   b;
     int numVar;
     int numCon;
-    String minmaxTF;
+	String solveMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,10 +36,6 @@ public class MatrixInput extends ActionBarActivity {
         setContentView(R.layout.activity_matrix_input);
 
         initialize();
-
-        int numVar =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
-        int numCon =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
-        minmaxTF = getIntent().getExtras().get("minOrmax").toString();  // will be used to find min or max.
 
         EquationGenerator(numVar, numCon);
 
@@ -100,14 +97,17 @@ public class MatrixInput extends ActionBarActivity {
 
         eqButton = (FloatingActionButton) findViewById(R.id.fab);
         solve = (Button) findViewById(R.id.solveButton);
-          }
+	    numVar =  Integer.parseInt(getIntent().getStringExtra("numVar"));  // Get number of variables from input activity
+	    numCon =  Integer.parseInt(getIntent().getStringExtra("numCon")); // Get number of constraints from input activity
+	    solveMode = getIntent().getExtras().get("solveMode").toString();  // will be used to find min or max.
+    }
 
 
     public void EquationGenerator(int numcolumns, int numrow){
 
         TableRow.LayoutParams editMarginParams = new TableRow.LayoutParams(TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
         editMarginParams.setMargins(5, 5, 5, 5);
-        if(Integer.valueOf(android.os.Build.VERSION.SDK) >= 17){
+        if(Build.VERSION.SDK_INT >= 17){
             editMarginParams.setMarginStart(5);
             editMarginParams.setMarginEnd(5);
         }
