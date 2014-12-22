@@ -34,7 +34,14 @@ public class ResultsActivity extends ActionBarActivity {
 
 	   // Cheers(solution);
 	   // Cheers("Optimal: " + optimalValue);
-		TextView tv_solution = (TextView) findViewById(R.id.solution);
+
+	    // Set objective function
+	    TextView tv_objFunc = (TextView) findViewById(R.id.resultObjFunc);
+	    tv_objFunc.setText(objFunc);
+
+	    // Set solution
+		TextView tv_solution = (TextView) findViewById(R.id.solutionValues);
 	    tv_solution.setText(solution + " " + optimalValue);
+
     }
 }

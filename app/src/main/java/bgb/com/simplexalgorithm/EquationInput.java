@@ -148,8 +148,8 @@ public class EquationInput extends ActionBarActivity {
 				constraints[i] = constraints[i].replace("x"+j,"");
 			}
 
-			constraintsCoeff[i] = constraints[i].split("=")[0];
-			constraintsEquals[i] = constraints[i].split("=")[1];
+			constraintsCoeff[i] = constraints[i].split("<=")[0];
+			constraintsEquals[i] = constraints[i].split("<=")[1];
 
 			if(constraintsEquals[i].startsWith("+")) {
 				constraintsEquals[i] = constraintsEquals[i].substring(1);
