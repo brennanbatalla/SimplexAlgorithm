@@ -137,28 +137,26 @@ public class MatrixInput extends ActionBarActivity {
 
     public boolean validateInputs(int numCol, int numRow){
         boolean validate = true;
-        double[][] inputs = new double[numRow][numCol];
 
         TableLayout tblLayout = (TableLayout)findViewById(R.id.functionLayout);
 
         // Run through the matrix inputs
         for (int i = 0; i<= numRow;i++){
             TableRow inputRow = (TableRow) tblLayout.getChildAt(i);
-            for (int j = 0; j <= numCol;j++ ) {
+            for (int j = 0; j <= numCol; j++ ) {
                 EditText et = (EditText) inputRow.getChildAt(j);
 
                 if (!et.getText().toString().matches("")) {      // Checking for non-input
                     try {
-                         Double.parseDouble(et.getText().toString());
-                    }catch(NumberFormatException e){            // Checking for non number input
+	                    Double.parseDouble(et.getText().toString());
+                    } catch(NumberFormatException e){            // Checking for non number input
                         Log.e("row" + i + "" + "col" + j + "not a number", et.getText().toString());
                         cheers("'" + et.getText().toString() + "'" + " is not a number.");
                         validate = false;
                         break;
                     }
-            }
-            else{
-                Log.e("row" + i + "" + "col" + j +" null", et.getText().toString());
+            } else {
+                Log.e("Row " + i + " Col " + j +" null", et.getText().toString());
                 validate = false;
                 cheers("Missing an input.");
                 break;
