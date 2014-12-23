@@ -1,6 +1,5 @@
 package bgb.com.simplexalgorithm;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -27,7 +26,6 @@ public class EquationInput extends ActionBarActivity {
 	LinearLayout.LayoutParams lp;
 	Button btn_solve;
 
-    String solveMode;
 	double[]   c;
 	double[][] A;
 	double[]   b;
@@ -68,7 +66,6 @@ public class EquationInput extends ActionBarActivity {
 		lp = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
 		numVariables =  Integer.parseInt(getIntent().getStringExtra("numVar"));  // Get number of variables from input activity
 		numConstraints =  Integer.parseInt(getIntent().getStringExtra("numCon")); // Get number of constraints from input activity
-		solveMode = getIntent().getExtras().get("solveMode").toString();  // will be used to find min or max.
 	}
 
 	private void generateInputs() {

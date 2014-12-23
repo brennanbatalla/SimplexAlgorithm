@@ -1,6 +1,5 @@
 package bgb.com.simplexalgorithm;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -39,9 +38,8 @@ public class MatrixInput extends ActionBarActivity {
 
         final int numVar =  Integer.parseInt(getIntent().getExtras().get("numVar").toString());  // Get number of variables from input activity
         final int numCon =  Integer.parseInt(getIntent().getExtras().get("numCon").toString()); // Get number of constraints from input activity
-        //minmaxTF = getIntent().getExtras().get("minOrmax").toString();  // will be used to find min or max.
 
-        EquationGenerator(numVar, numCon);
+	    EquationGenerator(numVar, numCon);
 
         solve.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,9 +99,9 @@ public class MatrixInput extends ActionBarActivity {
 
     public void EquationGenerator(int numcolumns, int numrow){
 
-        TableRow.LayoutParams editMarginParams = new TableRow.LayoutParams(TableLayout.LayoutParams.FILL_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
+        TableRow.LayoutParams editMarginParams = new TableRow.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT,TableLayout.LayoutParams.WRAP_CONTENT);
         editMarginParams.setMargins(5, 5, 5, 5);
-        if(Integer.valueOf(android.os.Build.VERSION.SDK) >= 17){
+        if(android.os.Build.VERSION.SDK_INT >= 17){
             editMarginParams.setMarginStart(5);
             editMarginParams.setMarginEnd(5);
         }
@@ -124,7 +122,7 @@ public class MatrixInput extends ActionBarActivity {
             }
 
             table.addView(row, new TableLayout.LayoutParams(
-                    TableLayout.LayoutParams.FILL_PARENT,
+                    TableLayout.LayoutParams.MATCH_PARENT,
                     TableLayout.LayoutParams.WRAP_CONTENT));
 
         }
@@ -222,43 +220,12 @@ public class MatrixInput extends ActionBarActivity {
 
         s = new Simplex(A,b,c);
 
-        double[] x = s.primal();
-
-        String solution = "Solution is ";
-        double optimalValue = 0;
-        for (int i = 0; i < x.length; i++) {
-            optimalValue +=  c[i]*x[i];
-            Log.e("Primal: ", "x[" + i + "] = " + x[i]);
-            solution += "x" + i + " = " + x[i] +", ";
-        }
-
-        solution = solution.substring(0,solution.length()-1);
-
-        double[] y = s.dual();
-        for (int j = 0; j < y.length; j++)
-            Log.e("Dual: ","y[" + j + "] = " + y[j]);
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        public void cheers(String message){
-            Toast.makeText(getApplicationContext(),message,
-                    Toast.LENGTH_LONG).show();
-        }
+    public void cheers(String message){
+        Toast.makeText(getApplicationContext(),message,
+                Toast.LENGTH_LONG).show();
+    }
 
 
 }
